@@ -1,5 +1,24 @@
-#root {
+/* #root {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+} */
+* {
+  outline: 1px solid #ff00008a;
+}
+:root {
+  --border-radius: 2rem;
+  --border-radius-plus: 2.5rem;
+  --border-ligth: #4ca5d9;
+  --border-dark: #4cd964;
+
+  --header-color-light: #e8e8e8;
+  --header-color-dark: #212121;
+  --header-title-light: #14213d;
+  --header-title-dark: #ffffff;
+  --header-shadow-light: #4ca5d9;
+  --header-shadow-dark: #4cd964;
+  --container-bkg-light: #f9fafb;
+  --container-bkg-dark: #1f1f1f;
+  --container-color-light: #333333;
+  --container-color-dark: #e5e5e5;
 }
