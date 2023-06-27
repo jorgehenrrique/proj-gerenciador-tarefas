@@ -10,11 +10,11 @@ export default function Logo() {
   console.log(pathname)
 
   useEffect(() => {
-    (pathname !== '/' ? setButtonName('HOME') : setButtonName('TAREFAS'))
+    (pathname !== '/tarefas' ? setButtonName('HOME') : setButtonName('TAREFAS'))
   }, [pathname])
 
   const voltarHome = () => {
-    navigate('/');
+    navigate('/tarefas');
   };
 
   return (

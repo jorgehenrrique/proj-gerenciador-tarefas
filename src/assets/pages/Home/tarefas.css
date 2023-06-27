@@ -29,11 +29,21 @@
   padding: 1rem;
   background-color: #9bf2fe71;
   border-radius: var(--border-radius);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   overflow-y: auto;
   border-bottom: 2px solid #9bf2fe;
   box-shadow: 0 6px 10px 1px #9bf2fe;
 }
+.lista div {
+  display: flex;
+  justify-content: space-between;
+}
+.add {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
 .colunas-listas .lista h1 {
   margin-bottom: 2rem;
   font-size: 2.2rem;
@@ -60,6 +70,10 @@
   border-radius: var(--border-radius);
   color: #fff;
   font-size: 1.8rem;
+  backdrop-filter: blur(2px);
+}
+.buscador::placeholder {
+  color: #fff;
 }
 
 @media (max-width: 800px) {

@@ -1,5 +1,6 @@
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
+import mais from './icon/mais.png';
 import './tarefas.css';
 
 export default function HomeTarefas() {
@@ -12,16 +13,21 @@ export default function HomeTarefas() {
 
       <div className="colunas-listas">
         <div className="lista">
-          <h1>Tarefas Listadas</h1>
+          <div>
+            <h1>Tarefas Listadas</h1>
+            <button className='add'><img src={mais} alt="Add" /></button>
+          </div>
           <section>
             <Listas />
           </section>
         </div>
 
         <div className="lista">
-          <h1>Tarefas Iniciadas</h1>
+          <div>
+            <h1>Tarefas Iniciadas</h1>
+            <button className='add'><img src={mais} alt="Add" /></button>
+          </div>
           <section>
-            <Listas />
             <Listas />
             <Listas />
             <Listas />
@@ -29,7 +35,10 @@ export default function HomeTarefas() {
         </div>
 
         <div className="lista">
-          <h1>Tarefas Finalizadas</h1>
+          <div>
+            <h1>Tarefas Finalizadas</h1>
+            <button className='add'><img src={mais} alt="Add" /></button>
+          </div>
           <section>
             <Listas />
           </section>

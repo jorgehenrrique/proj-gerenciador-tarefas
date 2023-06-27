@@ -6,6 +6,8 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 .section-lista h2 {
   font-size: 2rem;
@@ -16,4 +18,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   height: 6rem;
+}
+
+.edit {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
