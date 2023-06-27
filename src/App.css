@@ -1,10 +1,10 @@
-/* #root {
-  margin: 0 auto;
-  text-align: center;
-} */
 * {
   outline: 1px solid #ff00008a;
 }
+/* #root {
+  height: 100%;
+  height: fit-content;
+} */
 :root {
   --border-radius: 2rem;
   --border-radius-plus: 2.5rem;
@@ -21,4 +21,10 @@
   --container-bkg-dark: #1f1f1f;
   --container-color-light: #333333;
   --container-color-dark: #e5e5e5;
+}
+
+@media (max-width: 800px) {
+  .hidden {
+    visibility: hidden;
+  }
 }

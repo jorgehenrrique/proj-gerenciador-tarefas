@@ -1,0 +1,19 @@
+.section-lista {
+  width: 100%;
+  height: 14rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.section-lista h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.section-lista p {
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 6rem;
+}

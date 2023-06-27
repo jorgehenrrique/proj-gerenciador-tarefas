@@ -23,8 +23,7 @@
 
   position: fixed;
   top: 4rem;
-  left: 0;
-  margin: 4rem;
+  left: 2rem;
   z-index: 1000;
 }
 
