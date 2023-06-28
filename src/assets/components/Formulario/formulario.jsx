@@ -69,13 +69,30 @@ export default function Formulario({ state }) {
     })
   }
 
+  function deleteTarefa(id) {
+    console.log(id)
+    const options = { method: 'DELETE' };
+    fetch(`http://localhost:3000/task/${id}`, options)
+      .then((res) => {
+        if (res.status === 204) {
+          console.log('Tarefa deletada com sucesso');
+          console.log(res)
+          setTimeout(() => {
+            navigate('/tarefas');
+          }, 2000);
+        } else {
+          console.log('Ouve um erro ao deletar tarefa.');
+        }
+      })
+  }
+
   return (
-    <form className='form'>
+    <form className='form' onSubmit={(e) => e.preventDefault()}>
 
       <label htmlFor="nome">Nome</label>
       <input type="text" id='nome' defaultValue={name} ref={nome} />
 
-      <label htmlFor="select">Select</label>
+      <label htmlFor="select">Tipo de lista</label>
       <select id='select' ref={opcao} defaultValue={status || state}>
         <option value="" disabled hidden></option>
         <option value="LISTADA">LISTADA</option>
@@ -88,7 +105,7 @@ export default function Formulario({ state }) {
 
       <div>
         {id && (
-          <button>Deletar</button>
+          <button onClick={() => deleteTarefa(id)}>Deletar</button>
         )}
         <button onClick={handlerSubmit}>Cadastrar</button>
       </div>
