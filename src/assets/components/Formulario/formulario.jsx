@@ -1,16 +1,12 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import './cadastrarTarefas.css';
-import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
+/* eslint-disable react/prop-types */
 import { useRef } from 'react';
-import Formulario from '../../components/Formulario/formulario';
+import { useNavigate } from 'react-router-dom';
 
-
-export default function CadastrarTarefas() {
-
+export default function Formulario({ state }) {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  // console.log(state)
+  // const { state } = useLocation();
 
+  console.log(state)
   const nome = useRef(null);
   const opcao = useRef(null);
   const descricao = useRef(null);
@@ -19,7 +15,7 @@ export default function CadastrarTarefas() {
     e.preventDefault();
     // console.log(nome.current.value)
     if (!nome.current.value.trim()) {
-      // alert("Informe um nome!");
+      alert("Informe um nome!");
       return;
     }
     // console.log(opcao.current.value)
@@ -62,35 +58,27 @@ export default function CadastrarTarefas() {
     })
   }
 
-
   return (
-    <div className="container-cadastrar">
-      <Breadcrumb />
+    <form className='form' onSubmit={handlerSubmit}>
 
-      <section className='cadastrar'>
-        <Formulario state={state} />
-        {/* <form className='form' onSubmit={handlerSubmit}>
+      <label htmlFor="nome">Nome</label>
+      <input type="text" id='nome' ref={nome} />
 
-          <label htmlFor="nome">Nome</label>
-          <input type="text" id='nome' ref={nome} />
+      <label htmlFor="select">Select</label>
+      <select id='select' ref={opcao} defaultValue={state}>
+        <option value="" disabled hidden></option>
+        <option value="LISTADA">LISTADA</option>
+        <option value="INICIADA">INICIADA</option>
+        <option value="FINALIZADA">FINALIZADA</option>
+      </select>
 
-          <label htmlFor="select">Select</label>
-          <select id='select' ref={opcao} defaultValue={state}>
-            <option value="" disabled hidden></option>
-            <option value="LISTADA">LISTADA</option>
-            <option value="INICIADA">INICIADA</option>
-            <option value="FINALIZADA">FINALIZADA</option>
-          </select>
+      <label htmlFor="descricao">Descrição</label>
+      <textarea ref={descricao} id="descricao" cols="30" rows="10"></textarea>
 
-          <label htmlFor="descricao">Descrição</label>
-          <textarea ref={descricao} id="descricao" cols="30" rows="10"></textarea>
+      <div>
+        <button>Cadastrar</button>
+      </div>
 
-          <div>
-            <button>Cadastrar</button>
-          </div>
-
-        </form> */}
-      </section>
-    </div>
+    </form>
   );
 }
