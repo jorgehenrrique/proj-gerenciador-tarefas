@@ -10,9 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Logo />
     <Routes>
       <Route index path='/tarefas' element={<App />} />
-      <Route path='/tarefas/cadastrarTarefas' element={<CadastrarTarefas />} />
-      <Route path='/tarefas/editarTarefas' element={<EditarTarefas />} />
-      {/* <Route path='/tarefas/:id' element={<EditarTarefas />} /> */}
+      <Route path='/tarefas/cadastrar' element={<CadastrarTarefas />} />
+      {/* <Route path='/tarefas/editar' element={<EditarTarefas />} /> */}
+      <Route path='/tarefas/:id' element={<EditarTarefas />} />
       <Route path='*' element={<App />} />
     </Routes>
   </BrowserRouter>

@@ -10,12 +10,12 @@
   /* position: relative; */
 }
 .cadastrar {
-  background-color: #dfb3b3b0;
+  background-color: #e0bfbfb0;
   background-image: url("../../styles/icon/ideas.svg");
   background-position: center right 10%;
   background-size: auto;
   background-repeat: no-repeat;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(1px);
 
   margin: 0 auto;
   margin-top: 12rem;
@@ -23,5 +23,47 @@
   height: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
+  border-radius: var(--border-radius);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding-left: 2rem;
+}
+.form input,
+.form textarea,
+.form select {
+  height: 4rem;
+  border: 2px solid #000;
+  border-radius: var(--border-radius);
+  padding: 0 1rem;
+  background-color: #fff;
+}
+.form textarea {
+  height: 12rem;
+  padding: 1rem;
+}
+.form div {
+  background-color: #9bf2fe;
+  height: 4rem;
+  width: fit-content;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  align-self: flex-end;
+  transition: all 0.3s ease;
+}
+.form div:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 10px 1px #9bf2fe;
+}
+.form div:active {
+  transform: scale(1);
+  border-bottom: 2px solid #9bf2fe;
 }

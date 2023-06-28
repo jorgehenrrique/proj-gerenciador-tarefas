@@ -21,7 +21,7 @@ export default function HomeTarefas() {
         <div className="lista">
           <div>
             <h1>Tarefas Listadas</h1>
-            <NavLink className='add' state={'LISTADA'} to='/tarefas/cadastrarTarefas'>
+            <NavLink className='add' state={'LISTADA'} to='/tarefas/cadastrar'>
               <img src={mais} alt="Add" /></NavLink>
           </div>
           <section>
@@ -41,7 +41,7 @@ export default function HomeTarefas() {
           <div>
             <h1>Tarefas Iniciadas</h1>
             {/* <button className='add'><img src={mais} alt="Add" /></button> */}
-            <NavLink className='add' state={'INICIADA'} to='/tarefas/cadastrarTarefas'>
+            <NavLink className='add' state={'INICIADA'} to='/tarefas/cadastrar'>
               <img src={mais} alt="Add" /></NavLink>
           </div>
           <section>
@@ -60,7 +60,7 @@ export default function HomeTarefas() {
           <div>
             <h1>Tarefas Finalizadas</h1>
             {/* <button className='add'><img src={mais} alt="Add" /></button> */}
-            <NavLink className='add' state={'FINALIZADA'} to='/tarefas/cadastrarTarefas'>
+            <NavLink className='add' state={'FINALIZADA'} to='/tarefas/cadastrar'>
               <img src={mais} alt="Add" /></NavLink>
           </div>
           <section>
