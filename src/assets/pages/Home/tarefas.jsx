@@ -8,8 +8,12 @@ import './tarefas.css';
 
 export default function HomeTarefas() {
 
-  const [data] = useFetch('http://localhost:3000/task');
+  const options = {
+    method: 'GET',
+  };
+  const [data] = useFetch('http://localhost:3000/task', options);
 
+  console.log(data);
 
   return (
     <div className="container-tarefas">

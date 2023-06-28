@@ -6,7 +6,7 @@ import { useRef } from 'react';
 export default function CadastrarTarefas() {
 
   const { state } = useLocation();
-  console.log(state)
+  // console.log(state)
 
   const nome = useRef(null);
   const opcao = useRef(null);
@@ -14,19 +14,47 @@ export default function CadastrarTarefas() {
 
   function handlerSubmit(e) {
     e.preventDefault();
+    console.log(nome.current.value)
     if (!nome.current.value.trim()) {
       alert("Informe um nome!");
       return;
     }
+    console.log(opcao.current.value)
     if (!opcao.current.value) {
       alert("Selecione uma opção!");
       return;
     }
+    console.log(descricao.current.value)
     if (!descricao.current.value.trim()) {
       alert("Adicione uma descrição!");
       return;
     }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: `${nome.current.value}`, description: `${descricao.current.value}`,
+        status: `${opcao.current.value}`
+      })
+    };
+    postFetch(options);
   }
+
+  function postFetch(options) {
+
+    const url = 'http://localhost:3000/task';
+    fetch(url, options).then((res) => {
+      if (res.status === 201 && res.ok) {
+        console.log(res)
+      } else {
+        console.warn(res)
+      }
+    })
+  }
+
 
   return (
     <div className="container-cadastrar">

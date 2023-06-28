@@ -25,6 +25,6 @@
 
 @media (max-width: 800px) {
   .hidden {
-    visibility: hidden;
+    visibility: auto;
   }
 }
