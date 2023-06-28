@@ -38,7 +38,7 @@ export default function CadastrarTarefas() {
           <input type="text" id='nome' ref={nome} />
 
           <label htmlFor="select">Select</label>
-          <select id='select' ref={opcao} defaultValue="">
+          <select id='select' ref={opcao} defaultValue={state}>
             <option value="" disabled hidden></option>
             <option value="LISTADA">LISTADA</option>
             <option value="INICIADA">INICIADA</option>
