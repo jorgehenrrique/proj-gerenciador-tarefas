@@ -1,7 +1,6 @@
 import './assets/styles/reset.css';
 import './App.css';
 import HomeTarefas from './assets/pages/Home/tarefas';
-// import { NavLink } from 'react-router-dom';
 
 function App() {
 

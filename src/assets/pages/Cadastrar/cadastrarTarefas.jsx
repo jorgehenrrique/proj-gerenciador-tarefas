@@ -1,10 +1,12 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './cadastrarTarefas.css';
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import { useRef } from 'react';
 
+
 export default function CadastrarTarefas() {
 
+  const navigate = useNavigate();
   const { state } = useLocation();
   // console.log(state)
 
@@ -14,19 +16,19 @@ export default function CadastrarTarefas() {
 
   function handlerSubmit(e) {
     e.preventDefault();
-    console.log(nome.current.value)
+    // console.log(nome.current.value)
     if (!nome.current.value.trim()) {
-      alert("Informe um nome!");
+      // alert("Informe um nome!");
       return;
     }
-    console.log(opcao.current.value)
+    // console.log(opcao.current.value)
     if (!opcao.current.value) {
-      alert("Selecione uma opção!");
+      // alert("Selecione uma opção!");
       return;
     }
-    console.log(descricao.current.value)
+    // console.log(descricao.current.value)
     if (!descricao.current.value.trim()) {
-      alert("Adicione uma descrição!");
+      // alert("Adicione uma descrição!");
       return;
     }
 
@@ -44,13 +46,17 @@ export default function CadastrarTarefas() {
   }
 
   function postFetch(options) {
-
     const url = 'http://localhost:3000/task';
     fetch(url, options).then((res) => {
       if (res.status === 201 && res.ok) {
         console.log(res)
+        // toast.success('Tarefa criada com sucesso!');
+        setTimeout(() => {
+          navigate('/tarefas');
+        }, 2000);
       } else {
         console.warn(res)
+        // toast.error('Erro ao cliar tarefa');
       }
     })
   }
