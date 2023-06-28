@@ -25,7 +25,8 @@ export default function HomeTarefas() {
           <section>
             {data && (
               data.map(item => {
-                if (item.status === 'LISTADA') {
+                // if (item.status === 'LISTADA') {
+                if (item.status) {
                   return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
                     description={item.description} create={item.created_at} />)
                 }
