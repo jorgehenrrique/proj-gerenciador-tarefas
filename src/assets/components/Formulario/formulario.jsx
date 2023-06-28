@@ -1,36 +1,41 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Formulario({ state }) {
   const navigate = useNavigate();
-  // const { state } = useLocation();
 
-  console.log(state)
   const nome = useRef(null);
   const opcao = useRef(null);
   const descricao = useRef(null);
+  const { name, status, description, id, create } = state;
+  // console.log('Nome: ' + name, 'Status: ' + status, 'Descricao: ' + description, 'ID: ' + id, 'Crate: ' + create);
+
+  if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
+    console.log('Entrou por adc taferas')
+  } else {
+    console.log('Não entrou por adc taferas')
+  }
 
   function handlerSubmit(e) {
     e.preventDefault();
-    // console.log(nome.current.value)
     if (!nome.current.value.trim()) {
       alert("Informe um nome!");
       return;
     }
-    // console.log(opcao.current.value)
     if (!opcao.current.value) {
-      // alert("Selecione uma opção!");
+      alert("Selecione uma opção!");
       return;
     }
-    // console.log(descricao.current.value)
     if (!descricao.current.value.trim()) {
-      // alert("Adicione uma descrição!");
+      alert("Adicione uma descrição!");
       return;
     }
 
     const options = {
-      method: 'POST',
+      method: id ? 'PUT' : 'POST',
       headers: {
         "Content-Type": "application/json"
       },
@@ -43,17 +48,23 @@ export default function Formulario({ state }) {
   }
 
   function postFetch(options) {
-    const url = 'http://localhost:3000/task';
+    const url = `http://localhost:3000/task/${id ?? ''}`;
     fetch(url, options).then((res) => {
-      if (res.status === 201 && res.ok) {
+      if (res.status === 200 && res.ok) {
         console.log(res)
-        // toast.success('Tarefa criada com sucesso!');
+        console.log('Tarefa editada com sucesso!')
+        setTimeout(() => {
+          navigate('/tarefas');
+        }, 2000);
+      } else if (res.status === 201 && res.ok) {
+        console.log(res)
+        console.log('Tarefa criada com sucesso!')
         setTimeout(() => {
           navigate('/tarefas');
         }, 2000);
       } else {
         console.warn(res)
-        // toast.error('Erro ao cliar tarefa');
+        console.warn('Erro ao cliar tarefa')
       }
     })
   }
@@ -62,10 +73,10 @@ export default function Formulario({ state }) {
     <form className='form' onSubmit={handlerSubmit}>
 
       <label htmlFor="nome">Nome</label>
-      <input type="text" id='nome' ref={nome} />
+      <input type="text" id='nome' defaultValue={name} ref={nome} />
 
       <label htmlFor="select">Select</label>
-      <select id='select' ref={opcao} defaultValue={state}>
+      <select id='select' ref={opcao} defaultValue={status || state}>
         <option value="" disabled hidden></option>
         <option value="LISTADA">LISTADA</option>
         <option value="INICIADA">INICIADA</option>
@@ -73,9 +84,10 @@ export default function Formulario({ state }) {
       </select>
 
       <label htmlFor="descricao">Descrição</label>
-      <textarea ref={descricao} id="descricao" cols="30" rows="10"></textarea>
+      <textarea ref={descricao} defaultValue={description} id="descricao" cols="30" rows="10"></textarea>
 
       <div>
+
         <button>Cadastrar</button>
       </div>
 
