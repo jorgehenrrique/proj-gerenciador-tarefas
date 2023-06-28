@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './formulario.css';
 
 export default function Formulario({ state }) {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ export default function Formulario({ state }) {
   }
 
   return (
-    <form className='form' onSubmit={handlerSubmit}>
+    <form className='form'>
 
       <label htmlFor="nome">Nome</label>
       <input type="text" id='nome' defaultValue={name} ref={nome} />
@@ -87,8 +87,10 @@ export default function Formulario({ state }) {
       <textarea ref={descricao} defaultValue={description} id="descricao" cols="30" rows="10"></textarea>
 
       <div>
-
-        <button>Cadastrar</button>
+        {id && (
+          <button>Deletar</button>
+        )}
+        <button onClick={handlerSubmit}>Cadastrar</button>
       </div>
 
     </form>
