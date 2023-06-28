@@ -68,6 +68,7 @@ export default function CadastrarTarefas() {
 
       <section className='cadastrar'>
         <form className='form' onSubmit={handlerSubmit}>
+
           <label htmlFor="nome">Nome</label>
           <input type="text" id='nome' ref={nome} />
 
@@ -85,6 +86,7 @@ export default function CadastrarTarefas() {
           <div>
             <button>Cadastrar</button>
           </div>
+
         </form>
       </section>
     </div>

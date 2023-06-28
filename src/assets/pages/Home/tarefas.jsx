@@ -31,8 +31,7 @@ export default function HomeTarefas() {
             </div>
             <section>
               {data.map(item => {
-                // if (item.status === 'LISTADA') {
-                if (item.status) {
+                if (item.status === 'LISTADA') {
                   return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
                     description={item.description} create={item.created_at} />)
                 }
