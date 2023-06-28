@@ -14,10 +14,10 @@
   margin-bottom: 2rem;
 }
 .section-lista p {
-  white-space: wrap;
+  /* white-space: wrap; */
   overflow: hidden;
-  text-overflow: ellipsis;
-  height: 6rem;
+  /* text-overflow: ellipsis; */
+  /* height: 6rem; */
 }
 
 .edit {
