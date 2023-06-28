@@ -1,10 +1,10 @@
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
 import mais from './icon/mais.png';
-import './spinner.css';
-import './tarefas.css';
 import useFetch from '../../components/Hooks/useFetch';
 import { NavLink } from 'react-router-dom';
+import Loader from '../../components/Loader/loader';
+import './tarefas.css';
 
 export default function HomeTarefas() {
 
@@ -26,14 +26,13 @@ export default function HomeTarefas() {
                 <img src={mais} alt="Add" /></NavLink>
             </div>
             <section>
-              {data && (
-                data.map(item => {
-                  // if (item.status === 'LISTADA') {
-                  if (item.status) {
-                    return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                      description={item.description} create={item.created_at} />)
-                  }
-                }))}
+              {data.map(item => {
+                // if (item.status === 'LISTADA') {
+                if (item.status) {
+                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
+                    description={item.description} create={item.created_at} />)
+                }
+              })}
             </section>
           </div>
 
@@ -45,13 +44,12 @@ export default function HomeTarefas() {
                 <img src={mais} alt="Add" /></NavLink>
             </div>
             <section>
-              {data && (
-                data.map(item => {
-                  if (item.status === 'INICIADA') {
-                    return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                      description={item.description} create={item.created_at} />)
-                  }
-                }))}
+              {data.map(item => {
+                if (item.status === 'INICIADA') {
+                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
+                    description={item.description} create={item.created_at} />)
+                }
+              })}
             </section>
           </div>
 
@@ -63,22 +61,19 @@ export default function HomeTarefas() {
                 <img src={mais} alt="Add" /></NavLink>
             </div>
             <section>
-              {data && (
-                data.map(item => {
-                  if (item.status === 'FINALIZADA') {
-                    return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                      description={item.description} create={item.created_at} />)
-                  }
-                }))}
+              {data.map(item => {
+                if (item.status === 'FINALIZADA') {
+                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
+                    description={item.description} create={item.created_at} />)
+                }
+              })}
             </section>
           </div>
         </div>
       )}
 
       {!data && (
-        <div className="spinner">
-          <div className="spinner1"></div>
-        </div>
+        <Loader />
       )}
     </div>
   );
