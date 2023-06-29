@@ -10,33 +10,7 @@ function AnimaOpcoes({ name, status, description, id, create }) {
   const [active, setActive] = useState(false);
   const { fetchData } = useFetchOptions();
 
-  function handleIniciar(tipo, id) {
-    console.log(tipo, id);
-    const options = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ status: `${tipo}` })
-    }
-    const url = `http://localhost:3000/task/${id}`;
-    fetchData(url, options);
-  }
-
-  function handleFinalizar(tipo) {
-    console.log(tipo, id);
-    const options = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ status: `${tipo}` })
-    }
-    const url = `http://localhost:3000/task/${id}`;
-    fetchData(url, options);
-  }
-
-  function handleListar(tipo) {
+  function changeType(tipo, id) {
     console.log(tipo, id);
     const options = {
       method: 'PUT',
@@ -54,18 +28,18 @@ function AnimaOpcoes({ name, status, description, id, create }) {
       <ul>
         {status === 'LISTADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => handleIniciar('INICIADA', id)}>Iniciar</NavLink></li>
-          <li><NavLink onClick={() => handleFinalizar('FINALIZADA', id)}>Finalizar</NavLink></li>
+          <li><NavLink onClick={() => changeType('INICIADA', id)}>Iniciar</NavLink></li>
+          <li><NavLink onClick={() => changeType('FINALIZADA', id)}>Finalizar</NavLink></li>
         </>) : null}
         {status === 'INICIADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => handleListar('LISTADA', id)}>Listar</NavLink></li>
-          <li><NavLink onClick={() => handleFinalizar('FINALIZADA', id)}>Finalizar</NavLink></li>
+          <li><NavLink onClick={() => changeType('LISTADA', id)}>Listar</NavLink></li>
+          <li><NavLink onClick={() => changeType('FINALIZADA', id)}>Finalizar</NavLink></li>
         </>) : null}
         {status === 'FINALIZADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => handleListar('LISTADA', id)}>Listar</NavLink></li>
-          <li><NavLink onClick={() => handleIniciar('INICIADA', id)}>Iniciar</NavLink></li>
+          <li><NavLink onClick={() => changeType('LISTADA', id)}>Listar</NavLink></li>
+          <li><NavLink onClick={() => changeType('INICIADA', id)}>Iniciar</NavLink></li>
         </>) : null}
         {/* <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
         <li><NavLink to='/tarefas/cadastrar'>Iniciar</NavLink></li>
