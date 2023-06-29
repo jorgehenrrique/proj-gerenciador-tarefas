@@ -1,25 +1,50 @@
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
 import mais from './icon/mais.png';
-// import useFetch from '../../components/Hooks/useFetch';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
-// import { useEffect } from 'react';
-import useFetch from '../../components/Hooks/useFetch';
+import { useEffect, useState } from 'react';
+// import useUpdate from '../../components/Hooks/useUpdate';
 
 export default function HomeTarefas() {
-
-  // const options = {
-  //   method: 'GET',
-  // };
-  const [data] = useFetch('http://localhost:3000/task');
-
+  // const navigate = useNavigate();
+  const [data, setData] = useState(null);
+  const [update, setUpdate] = useState(false);
+  // let [data] = useFetch('http://localhost:3000/task');
   // useEffect(() => {
   //   fetchData('http://localhost:3000/task');
   // }, [fetchData]);
+  // const { update, alternateUpdate } = useUpdate();
+  console.log(update)
 
-  // console.log(data);
+
+
+  useEffect(() => {
+    console.log('Buscando os dados...');
+    fetch('http://localhost:3000/task')
+      .then((res) => {
+        if (res.status === 200 && res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Servidor indisponível');
+        }
+      }).then((data) => {
+        return setData(data);
+      }).catch((err) => {
+        // setErro(err.message);
+        console.log(err.message);
+      });
+
+    return (() => setUpdate(false));
+  }, [update]);
+
+
+  // const memoizedData = useMemo(() => {
+  //   return data;
+  // }, [data]);
+  // data = memoizedData;
+  console.log(data);
 
   return (
     <div className="container-tarefas">
@@ -39,7 +64,7 @@ export default function HomeTarefas() {
               {data.map(item => {
                 if (item.status === 'LISTADA') {
                   return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} />)
+                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
                 }
               })}
             </section>
@@ -55,7 +80,7 @@ export default function HomeTarefas() {
               {data.map(item => {
                 if (item.status === 'INICIADA') {
                   return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} />)
+                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
                 }
               })}
             </section>
@@ -71,7 +96,7 @@ export default function HomeTarefas() {
               {data.map(item => {
                 if (item.status === 'FINALIZADA') {
                   return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} />)
+                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
                 }
               })}
             </section>

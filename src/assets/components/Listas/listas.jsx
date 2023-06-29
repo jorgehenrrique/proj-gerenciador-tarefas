@@ -6,9 +6,9 @@ import './listas.css';
 import { useState } from 'react';
 import useFetchOptions from '../Hooks/useFetchOptions';
 
-function AnimaOpcoes({ name, status, description, id, create }) {
+function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
   const [active, setActive] = useState(false);
-  const { fetchData } = useFetchOptions();
+  const { fetchData } = useFetchOptions(); // hook personalizado - de Fetch
 
   function changeType(tipo, id) {
     console.log(tipo, id);
@@ -21,6 +21,7 @@ function AnimaOpcoes({ name, status, description, id, create }) {
     }
     const url = `http://localhost:3000/task/${id}`;
     fetchData(url, options);
+    setUpdate(true);
   }
 
   return (
@@ -52,8 +53,9 @@ function AnimaOpcoes({ name, status, description, id, create }) {
   );
 }
 
-export default function Listas({ name, status, description, id, create }) {
+export default function Listas({ name, status, description, id, create, setUpdate }) {
   // console.log(name, status, description, id, create)
+  // console.log(setUpdate)
 
   return (
     <div className="section-lista">
@@ -61,7 +63,7 @@ export default function Listas({ name, status, description, id, create }) {
         <h2>{name}</h2>
         <span className='edit'><AnimaOpcoes
           name={name} status={status} description={description}
-          create={create} id={id} /></span>
+          create={create} id={id} setUpdate={setUpdate} /></span>
       </div>
       <p>{description.substring(0, 60) + "..."}</p>
     </div>
