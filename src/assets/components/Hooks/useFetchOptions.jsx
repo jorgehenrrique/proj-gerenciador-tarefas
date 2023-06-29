@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function useFetchOptions() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const fetchData = useCallback((url, options) => {
     fetch(url, options)
@@ -10,18 +12,20 @@ export default function useFetchOptions() {
         if (res.status === 200 && res.statusText === 'OK') {
           console.log(res)
           console.log('Tarefa editada com sucesso!')
-          return res.json();
+          setTimeout(() => {
+            navigate('/tarefas');
+          }, 2000);
         } else if (res.status === 201 && res.statusText === 'Created') {
           console.log(res)
           console.log('Tarefa criada com sucesso!')
-          // setTimeout(() => {
-          //   navigate('/tarefas');
-          // }, 2000);
+          setTimeout(() => {
+            navigate('/tarefas');
+          }, 2000);
         } else if (res.status === 204) {
           console.log('Tarefa deletada com sucesso');
-          // setTimeout(() => {
-          //   navigate('/tarefas');
-          // }, 2000);
+          setTimeout(() => {
+            navigate('/tarefas');
+          }, 2000);
         } else {
           throw new Error('Servidor indisponível');
         }
@@ -33,7 +37,7 @@ export default function useFetchOptions() {
         setError(err.message);
         console.log(err.message);
       });
-  }, []);
+  }, [navigate]);
 
   // useEffect(() => {
   //   fetchData();

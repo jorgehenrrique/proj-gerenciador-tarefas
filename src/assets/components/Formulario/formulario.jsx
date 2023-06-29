@@ -51,46 +51,46 @@ export default function Formulario({ state }) {
 
   function postFetch(options) {
     const url = `http://localhost:3000/task/${id ?? ''}`;
-    // fetchData(url, options);
+    fetchData(url, options);
 
-    fetch(url, options).then((res) => {
-      if (res.status === 200 && res.ok) {
-        console.log(res)
-        console.log('Tarefa editada com sucesso!')
-        setTimeout(() => {
-          navigate('/tarefas');
-        }, 2000);
-      } else if (res.status === 201 && res.statusText === 'Created') {
-        console.log(res)
-        console.log('Tarefa criada com sucesso!')
-        setTimeout(() => {
-          navigate('/tarefas');
-        }, 2000);
-      } else {
-        console.warn(res)
-        console.warn('Erro ao criar tarefa')
-      }
-    })
+    // fetch(url, options).then((res) => {
+    //   if (res.status === 200 && res.ok) {
+    //     console.log(res)
+    //     console.log('Tarefa editada com sucesso!')
+    //     setTimeout(() => {
+    //       navigate('/tarefas');
+    //     }, 2000);
+    //   } else if (res.status === 201 && res.statusText === 'Created') {
+    //     console.log(res)
+    //     console.log('Tarefa criada com sucesso!')
+    //     setTimeout(() => {
+    //       navigate('/tarefas');
+    //     }, 2000);
+    //   } else {
+    //     console.warn(res)
+    //     console.warn('Erro ao criar tarefa')
+    //   }
+    // })
   }
 
   function deleteTarefa(id) {
     console.log(id)
     const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
-    // fetchData(url, options);
+    fetchData(url, options);
 
-    fetch(url, options)
-      .then((res) => {
-        if (res.status === 204) {
-          console.log(res);
-          console.log('Tarefa deletada com sucesso');
-          setTimeout(() => {
-            navigate('/tarefas');
-          }, 2000);
-        } else {
-          console.log('Ouve um erro ao deletar tarefa.');
-        }
-      })
+    // fetch(url, options)
+    //   .then((res) => {
+    //     if (res.status === 204) {
+    //       console.log(res);
+    //       console.log('Tarefa deletada com sucesso');
+    //       setTimeout(() => {
+    //         navigate('/tarefas');
+    //       }, 2000);
+    //     } else {
+    //       console.log('Ouve um erro ao deletar tarefa.');
+    //     }
+    //   })
   }
 
   return (
