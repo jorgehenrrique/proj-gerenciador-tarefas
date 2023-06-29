@@ -10,6 +10,7 @@ export default function HomeTarefas() {
 
   const [data, setData] = useState(null);
   // const [erro, setErro] = useState(null);
+  const [bkp, setBkp] = useState(null);
   const [update, setUpdate] = useState(false);
   const tarefa = useRef();
 
@@ -23,6 +24,7 @@ export default function HomeTarefas() {
           throw new Error('Servidor indisponível');
         }
       }).then((data) => {
+        setBkp(data);
         return setData(data);
       }).catch((err) => {
         // setErro(err.message);
@@ -49,21 +51,17 @@ export default function HomeTarefas() {
       return tarefa.status.toLowerCase().includes(busca) ||
         tarefa.name.toLowerCase().includes(busca) ||
         tarefa.description.toLowerCase().includes(busca);
-    })
+    });
 
     busca === '' ? setUpdate(true) : setData(newData);
-    console.log(newData)
-    console.log(data)
+    // console.log(newData)
+    // console.log(data)
+    // console.log(bkp)
   }
 
   function handleClear(event) {
-    console.log(event.target.className)
-    if (event.target.className === 'search-icon') {
-      console.log(event)
-      // Limpa o valor do input
-      tarefa.current.value = '';
-      // Atualiza o estado ou refaz a busca
-      buscarTarefa();
+    if (event.key === 'Backspace') {
+      setData(bkp);
     }
   }
 
@@ -71,7 +69,7 @@ export default function HomeTarefas() {
     <div className="container-tarefas">
       <Breadcrumb />
 
-      <input ref={tarefa} onChange={buscarTarefa} onClick={handleClear}
+      <input ref={tarefa} onChange={buscarTarefa} onKeyUpCapture={handleClear}
         type="search" placeholder='Buscar...'
         className="buscador" />
 
