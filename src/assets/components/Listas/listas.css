@@ -36,6 +36,7 @@
   height: 2rem;
   transition: width 0.6s linear;
   z-index: 10;
+  top: 3.8rem;
   position: absolute;
 }
 .nav-14.active {
@@ -47,19 +48,20 @@
   flex-direction: column;
   gap: 1rem;
   width: 0;
-  transition: width 0.6s linear;
+  /* transition: width 0.6s ease; */
   visibility: hidden;
 }
 .nav-14.active ul {
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 8rem;
+  right: 9rem;
   width: 100%;
   visibility: visible;
 }
 .nav-14 ul li {
-  transform: rotateY(0deg);
+  /* transform: rotateY(0deg); */
+  transform: translateX(60px);
   opacity: 0;
   transition: transform 0.6s linear, opacity 0.6s linear;
   background-color: #9bf2fe;
@@ -72,18 +74,23 @@
 .nav-14 ul li:hover {
   transform: scale(1.08);
   box-shadow: 0 1px 10px 1px #9bf2fe;
+  outline: 1px solid #fff;
 }
 .nav-14.active ul li {
   opacity: 1;
-  transform: rotateY(360deg);
+  /* transform: rotateY(360deg); */
+  transform: translateX(0px);
+  /* border: 1px solid #fff; */
+  /* outline: 1px solid #fff; */
 }
 .nav-14 button {
   background-color: #fff;
   cursor: pointer;
-  position: relative;
-  height: 3rem;
-  width: 3rem;
+  transition: all 0.2s ease;
+  /* position: relative; */
+  /* height: 3rem; */
+  /* width: 3rem; */
 }
-.nav-14.active button {
-  transform: rotate(-765deg) translateX(5.5px);
+.nav-14 button:hover {
+  box-shadow: 0 1px 10px 1px #9bf2fe;
 }

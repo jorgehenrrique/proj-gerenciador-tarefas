@@ -76,7 +76,6 @@ export default function Formulario({ state }) {
       .then((res) => {
         if (res.status === 204) {
           console.log('Tarefa deletada com sucesso');
-          console.log(res)
           setTimeout(() => {
             navigate('/tarefas');
           }, 2000);
