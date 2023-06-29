@@ -3,7 +3,8 @@
   height: 100vh;
   min-height: 100vh;
   background-color: #212121;
-  background-image: url("../../styles/img/randomized.svg");
+  background-image: url("../../styles/img/page-turner.svg");
+  /* background-image: url("../../styles/img/square-versatiles.svg"); */
   background-position: center center;
   background-size: cover;
   color: #fff;
@@ -24,4 +25,5 @@
   align-items: center;
   justify-content: stretch;
   border-radius: var(--border-radius);
+  border-bottom: 2px solid #9bf2fe;
 }
