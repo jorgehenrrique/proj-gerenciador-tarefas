@@ -14,18 +14,18 @@ export default function useFetchOptions() {
           console.log('Tarefa editada com sucesso!')
           setTimeout(() => {
             navigate('/tarefas');
-          }, 2000);
+          }, 100);
         } else if (res.status === 201 && res.statusText === 'Created') {
           console.log(res)
           console.log('Tarefa criada com sucesso!')
           setTimeout(() => {
             navigate('/tarefas');
-          }, 2000);
+          }, 100);
         } else if (res.status === 204) {
           console.log('Tarefa deletada com sucesso');
           setTimeout(() => {
             navigate('/tarefas');
-          }, 2000);
+          }, 100);
         } else {
           throw new Error('Servidor indisponível');
         }

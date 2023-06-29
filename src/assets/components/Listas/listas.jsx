@@ -55,7 +55,6 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
 
 export default function Listas({ name, status, description, id, create, setUpdate }) {
   // console.log(name, status, description, id, create)
-  // console.log(setUpdate)
 
   return (
     <div className="section-lista">

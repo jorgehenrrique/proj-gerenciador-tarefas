@@ -4,21 +4,14 @@ import mais from './icon/mais.png';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
-import { useEffect, useState } from 'react';
-// import useUpdate from '../../components/Hooks/useUpdate';
+import { useEffect, useRef, useState } from 'react';
 
 export default function HomeTarefas() {
-  // const navigate = useNavigate();
+
   const [data, setData] = useState(null);
+  // const [erro, setErro] = useState(null);
   const [update, setUpdate] = useState(false);
-  // let [data] = useFetch('http://localhost:3000/task');
-  // useEffect(() => {
-  //   fetchData('http://localhost:3000/task');
-  // }, [fetchData]);
-  // const { update, alternateUpdate } = useUpdate();
-  console.log(update)
-
-
+  const tarefa = useRef();
 
   useEffect(() => {
     console.log('Buscando os dados...');
@@ -44,13 +37,43 @@ export default function HomeTarefas() {
   //   return data;
   // }, [data]);
   // data = memoizedData;
-  console.log(data);
+  // console.log(data);
+
+
+
+  function buscarTarefa() {
+    const busca = tarefa.current.value.trim().toLowerCase();
+    console.log(busca)
+
+    const newData = data.filter(tarefa => {
+      return tarefa.status.toLowerCase().includes(busca) ||
+        tarefa.name.toLowerCase().includes(busca) ||
+        tarefa.description.toLowerCase().includes(busca);
+    })
+
+    busca === '' ? setUpdate(true) : setData(newData);
+    console.log(newData)
+    console.log(data)
+  }
+
+  function handleClear(event) {
+    console.log(event.target.className)
+    if (event.target.className === 'search-icon') {
+      console.log(event)
+      // Limpa o valor do input
+      tarefa.current.value = '';
+      // Atualiza o estado ou refaz a busca
+      buscarTarefa();
+    }
+  }
 
   return (
     <div className="container-tarefas">
       <Breadcrumb />
 
-      <input type="text" placeholder='Buscar...' className="buscador" />
+      <input ref={tarefa} onChange={buscarTarefa} onClick={handleClear}
+        type="search" placeholder='Buscar...'
+        className="buscador" />
 
       {data && (
         <div className="colunas-listas">

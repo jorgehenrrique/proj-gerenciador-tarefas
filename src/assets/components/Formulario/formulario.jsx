@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
 
 export default function Formulario({ state }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const nome = useRef(null);
   const opcao = useRef(null);
