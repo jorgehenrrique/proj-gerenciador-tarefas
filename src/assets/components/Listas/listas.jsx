@@ -47,9 +47,9 @@ export default function Listas({ name, status, description, id, create }) {
     <div className="section-lista">
       <div>
         <h2>{name}</h2>
-        <button className='edit'><AnimaOpcoes
+        <span className='edit'><AnimaOpcoes
           name={name} status={status} description={description}
-          create={create} id={id} /></button>
+          create={create} id={id} /></span>
       </div>
       <p>{description.substring(0, 60) + "..."}</p>
     </div>

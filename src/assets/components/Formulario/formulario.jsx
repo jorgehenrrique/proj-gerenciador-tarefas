@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './formulario.css';
+import useFetchOptions from '../Hooks/useFetchOptions';
 
 export default function Formulario({ state }) {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Formulario({ state }) {
   const descricao = useRef(null);
   const { name, status, description, id, create } = state;
   // console.log('Nome: ' + name, 'Status: ' + status, 'Descricao: ' + description, 'ID: ' + id, 'Crate: ' + create);
+  const { fetchData } = useFetchOptions();
 
   if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
     console.log('Entrou por adc taferas')
@@ -49,6 +51,8 @@ export default function Formulario({ state }) {
 
   function postFetch(options) {
     const url = `http://localhost:3000/task/${id ?? ''}`;
+    // fetchData(url, options);
+
     fetch(url, options).then((res) => {
       if (res.status === 200 && res.ok) {
         console.log(res)
@@ -56,7 +60,7 @@ export default function Formulario({ state }) {
         setTimeout(() => {
           navigate('/tarefas');
         }, 2000);
-      } else if (res.status === 201 && res.ok) {
+      } else if (res.status === 201 && res.statusText === 'Created') {
         console.log(res)
         console.log('Tarefa criada com sucesso!')
         setTimeout(() => {
@@ -64,17 +68,21 @@ export default function Formulario({ state }) {
         }, 2000);
       } else {
         console.warn(res)
-        console.warn('Erro ao cliar tarefa')
+        console.warn('Erro ao criar tarefa')
       }
     })
   }
 
   function deleteTarefa(id) {
     console.log(id)
+    const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
-    fetch(`http://localhost:3000/task/${id}`, options)
+    // fetchData(url, options);
+
+    fetch(url, options)
       .then((res) => {
         if (res.status === 204) {
+          console.log(res);
           console.log('Tarefa deletada com sucesso');
           setTimeout(() => {
             navigate('/tarefas');

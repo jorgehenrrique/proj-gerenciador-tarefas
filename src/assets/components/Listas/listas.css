@@ -17,6 +17,9 @@
 .section-lista p {
   overflow: hidden;
 }
+.section-lista span {
+  text-align: center;
+}
 
 .edit {
   width: 2rem;

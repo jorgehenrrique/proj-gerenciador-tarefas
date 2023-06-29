@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
 
-export default function useFetch(url, options) {
+export default function useFetch(url) {
 
   const [data, setData] = useState(null);
   const [erro, setErro] = useState(null);
 
   useEffect(() => {
-    fetch(url, options).then((res) => {
+    fetch(url).then((res) => {
       if (res.status === 200 && res.ok) {
         return res.json();
       } else {

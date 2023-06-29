@@ -1,17 +1,23 @@
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
 import mais from './icon/mais.png';
-import useFetch from '../../components/Hooks/useFetch';
+// import useFetch from '../../components/Hooks/useFetch';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
+// import { useEffect } from 'react';
+import useFetch from '../../components/Hooks/useFetch';
 
 export default function HomeTarefas() {
 
-  const options = {
-    method: 'GET',
-  };
-  const [data] = useFetch('http://localhost:3000/task', options);
+  // const options = {
+  //   method: 'GET',
+  // };
+  const [data] = useFetch('http://localhost:3000/task');
+
+  // useEffect(() => {
+  //   fetchData('http://localhost:3000/task');
+  // }, [fetchData]);
 
   // console.log(data);
 
