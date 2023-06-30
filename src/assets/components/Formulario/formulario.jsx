@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useRef } from 'react';
@@ -101,11 +102,6 @@ export default function Formulario({ state }) {
     console.log(notice)
     setStates({ ...states, msg: notice })
   }, [notice]);
-
-  // if (notice) {
-  //   console.log(notice)
-  //   setStates({ ...states, msg: notice })
-  // }
 
   return (
     <form className='form' onSubmit={(e) => e.preventDefault()}>

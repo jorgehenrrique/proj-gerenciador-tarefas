@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react';
 import './Notification.css';
 import Context from '../Context/Context';
@@ -8,7 +9,6 @@ export default function Notification() {
   const { states, setStates } = useContext(Context);
 
   useEffect(() => {
-    console.log('NOTIFICACAO ACIONADA', states);
     if (states.msg !== '' && states.msg !== null) {
       console.log('NOTIFICACAO ACIONADA', states.msg);
       setActive(true);
@@ -16,19 +16,13 @@ export default function Notification() {
         setActive(false);
         setNoActive(true);
         setStates({ ...states, msg: '' });
-      }, 4000);
+      }, 5000);
     }
   }, [states]);
 
-
-
-  // console.log(msg);
-  // setMsg(msg);
   return (
-    <div className={`container-notification ${active ? 'active' : ''} ${noActive ? 'no-active' : ''}`}
-      onClick={() => setActive(!active)}
-      onDoubleClick={() => setNoActive(!noActive)}>
-      <p>Tarefa editada com sucesso!</p>
+    <div className={`container-notification ${active ? 'active' : ''} ${noActive ? 'no-active' : ''}`}>
+      <p>{states.msg}</p>
     </div>
   );
 }
