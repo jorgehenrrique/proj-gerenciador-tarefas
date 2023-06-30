@@ -7,7 +7,7 @@ export default function Logo() {
   const { pathname } = useLocation();
   const [buttonName, setButtonName] = useState('TAREFAS');
 
-  console.log(pathname)
+  // console.log(pathname)
 
   useEffect(() => {
     (pathname !== '/tarefas' && pathname !== '/' ? setButtonName('HOME') : setButtonName('TAREFAS'))
