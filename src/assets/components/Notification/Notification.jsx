@@ -11,17 +11,20 @@ export default function Notification() {
   useEffect(() => {
     if (states.msg !== '' && states.msg !== null) {
       console.log('NOTIFICACAO ACIONADA', states.msg);
-      setActive(true);
+      setTimeout(() => {
+        setActive(true);
+      }, 400);
       setTimeout(() => {
         setActive(false);
         setNoActive(true);
         setStates({ ...states, msg: '' });
-      }, 5000);
+      }, 4500);
     }
   }, [states]);
 
   return (
-    <div className={`container-notification ${active ? 'active' : ''} ${noActive ? 'no-active' : ''}`}>
+    <div className={`container-notification ${active ? 'active' : ''} ${noActive ? 'no-active' : ''}`}
+      onClick={() => setNoActive(true)}>
       <p>{states.msg}</p>
     </div>
   );
