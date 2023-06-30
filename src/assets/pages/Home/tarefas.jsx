@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
 import { useEffect, useRef, useState } from 'react';
+import Notification from '../../components/Notification/Notification';
 
 export default function HomeTarefas() {
 
@@ -68,6 +69,7 @@ export default function HomeTarefas() {
   return (
     <div className="container-tarefas">
       <Breadcrumb />
+      <Notification />
 
       <input ref={tarefa} onChange={buscarTarefa} onKeyUpCapture={handleClear}
         type="search" placeholder='Buscar...'

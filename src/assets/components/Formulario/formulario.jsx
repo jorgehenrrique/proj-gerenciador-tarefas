@@ -4,6 +4,7 @@ import { useRef } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
+import Notification from '../Notification/Notification';
 
 export default function Formulario({ state }) {
   // const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Formulario({ state }) {
   const descricao = useRef(null);
   const { name, status, description, id, create } = state;
   // console.log('Nome: ' + name, 'Status: ' + status, 'Descricao: ' + description, 'ID: ' + id, 'Crate: ' + create);
-  const { fetchData } = useFetchOptions();
+  const { notice, fetchData } = useFetchOptions();
 
   if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
     console.log('Entrou por adc taferas')
@@ -92,6 +93,7 @@ export default function Formulario({ state }) {
     //     }
     //   })
   }
+  if (notice) console.log(notice)
 
   return (
     <form className='form' onSubmit={(e) => e.preventDefault()}>
@@ -117,6 +119,7 @@ export default function Formulario({ state }) {
         <button onClick={handlerSubmit}>Cadastrar</button>
       </div>
 
+      <Notification msg={'teste form'} />
     </form>
   );
 }

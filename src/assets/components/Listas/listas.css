@@ -40,7 +40,7 @@
   background-color: #fff;
   width: 2rem;
   height: 2rem;
-  transition: width 0.6s linear;
+  /* transition: width 0.6s linear; */
   z-index: 10;
   top: 3.3rem;
   position: absolute;
