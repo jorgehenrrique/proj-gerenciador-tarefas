@@ -1,5 +1,24 @@
-import { createContext } from 'react';
+/* eslint-disable react/prop-types */
+import { createContext, useState } from 'react';
+// import PropTypes from 'prop-types';
 
 const Context = createContext();
+
+export function MyContext(props) {
+  const [states, setStates] = useState({
+    msg: ''
+  })
+  console.log(states.msg)
+
+  return (
+    <Context.Provider value={{ states, setStates }}>
+      {props.children}
+    </Context.Provider>
+  )
+}
+
+// MyContext.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 export default Context;

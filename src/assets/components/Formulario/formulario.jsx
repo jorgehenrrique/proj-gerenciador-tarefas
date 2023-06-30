@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
 import Notification from '../Notification/Notification';
+import Context from '../Context/Context';
 
 export default function Formulario({ state }) {
   // const navigate = useNavigate();
@@ -15,6 +16,8 @@ export default function Formulario({ state }) {
   const { name, status, description, id, create } = state;
   // console.log('Nome: ' + name, 'Status: ' + status, 'Descricao: ' + description, 'ID: ' + id, 'Crate: ' + create);
   const { notice, fetchData } = useFetchOptions();
+  const { states, setStates } = useContext(Context);
+
 
   if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
     console.log('Entrou por adc taferas')
@@ -93,7 +96,16 @@ export default function Formulario({ state }) {
     //     }
     //   })
   }
-  if (notice) console.log(notice)
+
+  useEffect(() => {
+    console.log(notice)
+    setStates({ ...states, msg: notice })
+  }, [notice]);
+
+  // if (notice) {
+  //   console.log(notice)
+  //   setStates({ ...states, msg: notice })
+  // }
 
   return (
     <form className='form' onSubmit={(e) => e.preventDefault()}>
