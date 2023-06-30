@@ -16,7 +16,7 @@ export default function HomeTarefas() {
   const tarefa = useRef();
 
   useEffect(() => {
-    console.log('Buscando os dados...');
+    // console.log('Buscando os dados...');
     fetch('http://localhost:3000/task')
       .then((res) => {
         if (res.status === 200 && res.ok) {
