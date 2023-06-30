@@ -19,13 +19,11 @@
 
   display: flex;
   flex-flow: column nowrap;
-  /* text-align: center; */
+  text-align: center;
   align-items: center;
   justify-content: center;
 
-  /* transform: translateX(210px); */
   transform: translatey(1000px);
-  /* transform: translate(210px, 700px); */
   transition: all 0.8s ease;
   opacity: 0;
 }

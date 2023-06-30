@@ -44,6 +44,10 @@
   width: 3rem;
   height: 3rem;
   cursor: pointer;
+  transition: 0.2s linear;
+}
+.add:hover {
+  transform: scale(1.2);
 }
 
 .colunas-listas .lista h1 {
