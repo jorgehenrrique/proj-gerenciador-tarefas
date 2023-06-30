@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap");
+
 * {
   /* outline: 1px solid #ff00008a; */
 }
@@ -21,6 +23,10 @@
   --container-bkg-dark: #1f1f1f;
   --container-color-light: #333333;
   --container-color-dark: #e5e5e5;
+}
+
+#root {
+  font-family: "Lato", sans-serif;
 }
 
 @media (max-width: 800px) {
