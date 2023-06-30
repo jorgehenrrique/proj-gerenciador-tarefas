@@ -23,17 +23,15 @@
   justify-content: center;
 
   /* transform: translateX(210px); */
-  transform: translatey(700px);
+  transform: translatey(1000px);
   /* transform: translate(210px, 700px); */
-  transition: all 0.3s ease;
-  opacity: 0.3;
+  transition: all 0.5s ease;
+  opacity: 0;
 }
 .container-notification.active {
-  /* transform: translateX(0px); */
   transform: translatey(0px);
   opacity: 1;
-  /* transform: translate(0px); */
 }
 .container-notification.no-active {
-  transform: translatey(-70px);
+  transform: translatey(-1000px);
 }

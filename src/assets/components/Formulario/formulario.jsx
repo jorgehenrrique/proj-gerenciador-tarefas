@@ -99,7 +99,7 @@ export default function Formulario({ state }) {
   }
 
   useEffect(() => {
-    console.log(notice)
+    // console.log(notice)
     setStates({ ...states, msg: notice })
   }, [notice]);
 
@@ -127,7 +127,6 @@ export default function Formulario({ state }) {
         <button onClick={handlerSubmit}>Cadastrar</button>
       </div>
 
-      <Notification msg={'teste form'} />
     </form>
   );
 }
