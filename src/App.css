@@ -29,6 +29,25 @@
   font-family: "Lato", sans-serif;
 }
 
+/* || Scroll */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9bf2fe #070d12;
+}
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 20px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #9bf2fe;
+  border-radius: 20px;
+  border: 2px solid #070d12;
+}
+
 @media (max-width: 800px) {
   .hidden {
     visibility: auto;

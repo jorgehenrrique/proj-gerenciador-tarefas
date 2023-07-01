@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 0 2rem;
 }
 
@@ -28,6 +28,7 @@
   width: 100%;
   min-height: 90%;
   max-height: 90%;
+  max-width: 50rem;
   padding: 1rem;
   background-color: #9bf2fe71;
   border-radius: var(--border-radius);
@@ -91,5 +92,8 @@
   .container-tarefas {
     height: 100%;
     min-height: 100vh;
+  }
+  .lista {
+    max-height: 80rem;
   }
 }
