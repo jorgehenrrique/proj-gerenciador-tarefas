@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Context = createContext();
 
@@ -19,8 +18,8 @@ export function MyContext(props) {
   )
 }
 
-// MyContext.propTypes = {
-//   children: PropTypes.node.isRequired,
-// };
+MyContext.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Context;
