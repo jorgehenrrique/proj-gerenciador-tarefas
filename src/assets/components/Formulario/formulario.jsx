@@ -68,7 +68,7 @@ export default function Formulario({ state }) {
   }
 
   function deleteTarefa(id) {
-    console.log(id)
+    // console.log(id)
     const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
     fetchData(url, options);

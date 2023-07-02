@@ -11,8 +11,8 @@ export default function Notification() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (states.msg !== '' && states.msg !== null && states.pg === 'home' && pathname === '/tarefas') {
-      console.log('NOTIFICACAO ACIONADA, HOME', states.msg, states.pg);
+    if (states.msg !== '' && states.msg !== null &&
+      states.pg === 'home' && pathname === '/tarefas') {
       setTimeout(() => {
         setActive(true);
       }, 400);
@@ -23,8 +23,8 @@ export default function Notification() {
       }, 3000);
     }
 
-    if (states.form !== '' && states.form !== null && states.pg === 'form' && pathname === '/tarefas/cadastrar') {
-      console.log('NOTIFICACAO ACIONADA FORM', states.form, states.pg);
+    if (states.form !== '' && states.form !== null &&
+      states.pg === 'form' && pathname === '/tarefas/cadastrar') {
       setActive(true);
       setTimeout(() => {
         setActive(false);
