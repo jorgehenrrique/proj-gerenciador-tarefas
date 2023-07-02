@@ -10,13 +10,11 @@ import Notification from '../../components/Notification/Notification';
 export default function HomeTarefas() {
 
   const [data, setData] = useState(null);
-  // const [erro, setErro] = useState(null);
   const [bkp, setBkp] = useState(null);
   const [update, setUpdate] = useState(false);
   const tarefa = useRef();
 
   useEffect(() => {
-    // console.log('Buscando os dados...');
     fetch('http://localhost:3000/task')
       .then((res) => {
         if (res.status === 200 && res.ok) {
@@ -35,18 +33,9 @@ export default function HomeTarefas() {
     return (() => setUpdate(false));
   }, [update]);
 
-
-  // const memoizedData = useMemo(() => {
-  //   return data;
-  // }, [data]);
-  // data = memoizedData;
-  // console.log(data);
-
-
-
   function buscarTarefa() {
     const busca = tarefa.current.value.trim().toLowerCase();
-    console.log(busca)
+    // console.log(busca)
 
     const newData = data.filter(tarefa => {
       return tarefa.status.toLowerCase().includes(busca) ||
@@ -55,9 +44,6 @@ export default function HomeTarefas() {
     });
 
     busca === '' ? setUpdate(true) : setData(newData);
-    // console.log(newData)
-    // console.log(data)
-    // console.log(bkp)
   }
 
   function handleClear(event) {
