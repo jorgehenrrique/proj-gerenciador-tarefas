@@ -23,30 +23,22 @@ export default function Notification() {
       }, 3000);
     }
 
-    if (states.msg !== '' && states.msg !== null && states.pg === 'form' && pathname === '/tarefas/cadastrar') {
-      console.log('NOTIFICACAO ACIONADA FORM', states.msg, states.pg);
-      setTimeout(() => {
-        setActive(true);
-      }, 0);
+    if (states.form !== '' && states.form !== null && states.pg === 'form' && pathname === '/tarefas/cadastrar') {
+      console.log('NOTIFICACAO ACIONADA FORM', states.form, states.pg);
+      setActive(true);
       setTimeout(() => {
         setActive(false);
         setNoActive(true);
-        setStates({ ...states, msg: '' });
-      }, 3000);
+        setStates({ ...states, form: '' });
+      }, 2000);
       setNoActive(null);
     }
   }, [states]);
 
-  useEffect(() => {
-    // setActive(false);
-    // setNoActive(true);
-    console.log('ALTERNOU', pathname)
-  }, [pathname]);
-
   return (
     <div className={`container-notification ${active ? 'active' : ''} ${noActive ? 'no-active' : ''}`}
       onClick={() => setNoActive(true)}>
-      <p>{states.msg}</p>
+      <p>{states.msg || states.form}</p>
     </div>
   );
 }

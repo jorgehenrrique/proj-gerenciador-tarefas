@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
@@ -19,6 +19,7 @@ export default function Formulario({ state }) {
   const { notice, fetchData } = useFetchOptions();
   const { states, setStates } = useContext(Context);
 
+  const [isCadastrarDisabled, setIsCadastrarDisabled] = useState(false);
 
   if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
     console.log('Entrou por adc taferas')
@@ -26,23 +27,37 @@ export default function Formulario({ state }) {
     console.log('Não entrou por adc taferas')
   }
 
-  function handlerSubmit(e) {
-    e.preventDefault();
+  function handlerSubmit() {
+    // e.preventDefault();
     if (!nome.current.value.trim()) {
-      // alert("Informe um nome!");
-      setStates({ ...states, msg: "Informe um nome!", pg: 'form' })
+      setStates({ ...states, form: "Informe um nome!", pg: 'form' });
+      setIsCadastrarDisabled(true);
+      setTimeout(() => {
+        setIsCadastrarDisabled(false);
+      }, 2000);
       return;
     }
     if (!opcao.current.value) {
-      // alert("Selecione uma opção!");
-      setStates({ ...states, msg: "Selecione uma opção!", pg: 'form' })
+      setStates({ ...states, form: "Selecione uma opção!", pg: 'form' });
+      setIsCadastrarDisabled(true);
+      setTimeout(() => {
+        setIsCadastrarDisabled(false);
+      }, 2000);
       return;
     }
     if (!descricao.current.value.trim()) {
-      // alert("Adicione uma descrição!");
-      setStates({ ...states, msg: "Adicione uma descrição!", pg: 'form' })
+      setStates({ ...states, form: "Adicione uma descrição!", pg: 'form' });
+      setIsCadastrarDisabled(true);
+      setTimeout(() => {
+        setIsCadastrarDisabled(false);
+      }, 2000);
       return;
     }
+
+    // setIsCadastrarDisabled(true);
+    setTimeout(() => {
+      setIsCadastrarDisabled(false);
+    }, 2000);
 
     const options = {
       method: id ? 'PUT' : 'POST',
@@ -128,7 +143,7 @@ export default function Formulario({ state }) {
           {id && (
             <button onClick={() => deleteTarefa(id)}>Deletar</button>
           )}
-          <button onClick={handlerSubmit}>Cadastrar</button>
+          <button onClick={handlerSubmit} disabled={isCadastrarDisabled}>Cadastrar</button>
         </div>
 
       </form>
