@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import './cadastrarTarefas.css';
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Formulario from '../../components/Formulario/formulario';
+import Notification from '../../components/Notification/Notification';
 
 
 export default function CadastrarTarefas() {
@@ -11,6 +12,7 @@ export default function CadastrarTarefas() {
   return (
     <div className="container-cadastrar">
       <Breadcrumb />
+      <Notification />
 
       <section className='cadastrar'>
         <Formulario state={state} />

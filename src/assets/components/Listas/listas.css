@@ -10,6 +10,7 @@
   color: #000;
   position: relative;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 .section-lista h2 {
   font-size: 2rem;
@@ -18,7 +19,7 @@
   font-weight: bold;
 }
 .section-lista p {
-  font-weight: bold;
+  /* font-weight: bold; */
   overflow: hidden;
 }
 .section-lista span {

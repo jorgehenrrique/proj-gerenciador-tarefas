@@ -6,7 +6,8 @@ const Context = createContext();
 
 export function MyContext(props) {
   const [states, setStates] = useState({
-    msg: ''
+    msg: '',
+    pg: ''
   })
   console.log(states.msg)
 

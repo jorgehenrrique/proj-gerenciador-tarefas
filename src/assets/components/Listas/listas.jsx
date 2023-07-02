@@ -65,14 +65,14 @@ export default function Listas({ name, status, description, id, create, setUpdat
   }, [expand, max])
 
   return (
-    <div className="section-lista" onClick={() => setExpand(!expand)}>
+    <div className="section-lista">
       <div>
         <h2>{name}</h2>
         <span className='edit'><AnimaOpcoes
           name={name} status={status} description={description}
           create={create} id={id} setUpdate={setUpdate} /></span>
       </div>
-      <p>{description.substring(0, max) + pointing}</p>
+      <p onClick={() => setExpand(!expand)}>{description.substring(0, max) + pointing}</p>
     </div>
   );
 }

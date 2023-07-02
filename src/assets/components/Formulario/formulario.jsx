@@ -29,15 +29,18 @@ export default function Formulario({ state }) {
   function handlerSubmit(e) {
     e.preventDefault();
     if (!nome.current.value.trim()) {
-      alert("Informe um nome!");
+      // alert("Informe um nome!");
+      setStates({ ...states, msg: "Informe um nome!", pg: 'form' })
       return;
     }
     if (!opcao.current.value) {
-      alert("Selecione uma opção!");
+      // alert("Selecione uma opção!");
+      setStates({ ...states, msg: "Selecione uma opção!", pg: 'form' })
       return;
     }
     if (!descricao.current.value.trim()) {
-      alert("Adicione uma descrição!");
+      // alert("Adicione uma descrição!");
+      setStates({ ...states, msg: "Adicione uma descrição!", pg: 'form' })
       return;
     }
 
@@ -100,33 +103,35 @@ export default function Formulario({ state }) {
 
   useEffect(() => {
     // console.log(notice)
-    setStates({ ...states, msg: notice })
+    setStates({ ...states, msg: notice, pg: 'home' })
   }, [notice]);
 
   return (
-    <form className='form' onSubmit={(e) => e.preventDefault()}>
+    <>
+      <form className='form' onSubmit={(e) => e.preventDefault()}>
 
-      <label htmlFor="nome">Nome</label>
-      <input type="text" id='nome' defaultValue={name} ref={nome} />
+        <label htmlFor="nome">Nome</label>
+        <input type="text" id='nome' defaultValue={name} ref={nome} />
 
-      <label htmlFor="select">Tipo de lista</label>
-      <select id='select' ref={opcao} defaultValue={status || state}>
-        <option value="" disabled hidden></option>
-        <option value="LISTADA">LISTADA</option>
-        <option value="INICIADA">INICIADA</option>
-        <option value="FINALIZADA">FINALIZADA</option>
-      </select>
+        <label htmlFor="select">Tipo de lista</label>
+        <select id='select' ref={opcao} defaultValue={status || state}>
+          <option value="" disabled hidden></option>
+          <option value="LISTADA">LISTADA</option>
+          <option value="INICIADA">INICIADA</option>
+          <option value="FINALIZADA">FINALIZADA</option>
+        </select>
 
-      <label htmlFor="descricao">Descrição</label>
-      <textarea ref={descricao} defaultValue={description} id="descricao" cols="30" rows="10"></textarea>
+        <label htmlFor="descricao">Descrição</label>
+        <textarea ref={descricao} defaultValue={description} id="descricao" cols="30" rows="10"></textarea>
 
-      <div>
-        {id && (
-          <button onClick={() => deleteTarefa(id)}>Deletar</button>
-        )}
-        <button onClick={handlerSubmit}>Cadastrar</button>
-      </div>
+        <div>
+          {id && (
+            <button onClick={() => deleteTarefa(id)}>Deletar</button>
+          )}
+          <button onClick={handlerSubmit}>Cadastrar</button>
+        </div>
 
-    </form>
+      </form>
+    </>
   );
 }
