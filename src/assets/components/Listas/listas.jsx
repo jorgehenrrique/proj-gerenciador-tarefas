@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { NavLink } from 'react-router-dom';
 import editar from './icon/editar.png';
@@ -21,7 +20,7 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
     }
     const url = `http://localhost:3000/task/${id}`;
     fetchData(url, options);
-    setUpdate(true);
+    setUpdate(true); // Atualiza tarefas na home
   }
 
   return (
@@ -42,9 +41,6 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
           <li><NavLink onClick={() => changeType('LISTADA', id)}>Listar</NavLink></li>
           <li><NavLink onClick={() => changeType('INICIADA', id)}>Iniciar</NavLink></li>
         </>) : null}
-        {/* <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-        <li><NavLink to='/tarefas/cadastrar'>Iniciar</NavLink></li>
-        <li><NavLink to='/tarefas/cadastrar'>Finalizar</NavLink></li> */}
       </ul>
       <button onClick={() => setActive(!active)}>
         <img src={editar} alt="Opções" />
@@ -54,7 +50,7 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
 }
 
 export default function Listas({ name, status, description, id, create, setUpdate }) {
-  // console.log(name, status, description, id, create)
+
   const [expand, setExpand] = useState(false);
   const [max, setMax] = useState(null);
   const [pointing, setPointing] = useState(null);
