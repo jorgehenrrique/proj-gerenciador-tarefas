@@ -9,6 +9,7 @@
   flex-direction: column;
   color: #000;
   position: relative;
+  cursor: pointer;
 }
 .section-lista h2 {
   font-size: 2rem;

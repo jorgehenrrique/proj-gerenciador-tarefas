@@ -3,7 +3,7 @@
 import { NavLink } from 'react-router-dom';
 import editar from './icon/editar.png';
 import './listas.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useFetchOptions from '../Hooks/useFetchOptions';
 
 function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
@@ -55,16 +55,24 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
 
 export default function Listas({ name, status, description, id, create, setUpdate }) {
   // console.log(name, status, description, id, create)
+  const [expand, setExpand] = useState(false);
+  const [max, setMax] = useState(null);
+  const [pointing, setPointing] = useState(null);
+
+  useEffect(() => {
+    expand ? setMax(2000) : setMax(60);
+    expand ? setPointing('') : setPointing('...');
+  }, [expand, max])
 
   return (
-    <div className="section-lista">
+    <div className="section-lista" onClick={() => setExpand(!expand)}>
       <div>
         <h2>{name}</h2>
         <span className='edit'><AnimaOpcoes
           name={name} status={status} description={description}
           create={create} id={id} setUpdate={setUpdate} /></span>
       </div>
-      <p>{description.substring(0, 60) + "..."}</p>
+      <p>{description.substring(0, max) + pointing}</p>
     </div>
   );
 }
