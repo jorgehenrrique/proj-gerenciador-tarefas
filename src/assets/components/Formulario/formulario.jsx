@@ -2,33 +2,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useRef, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
-import Notification from '../Notification/Notification';
 import Context from '../Context/Context';
 
 export default function Formulario({ state }) {
-  // const navigate = useNavigate();
 
   const nome = useRef(null);
   const opcao = useRef(null);
   const descricao = useRef(null);
   const { name, status, description, id, create } = state;
-  // console.log('Nome: ' + name, 'Status: ' + status, 'Descricao: ' + description, 'ID: ' + id, 'Crate: ' + create);
   const { notice, fetchData } = useFetchOptions();
   const { states, setStates } = useContext(Context);
 
   const [isCadastrarDisabled, setIsCadastrarDisabled] = useState(false);
 
-  if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
-    console.log('Entrou por adc taferas')
-  } else {
-    console.log('Não entrou por adc taferas')
-  }
+  // if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
+  //   console.log('Entrou por adc taferas')
+  // } else {
+  //   console.log('Não entrou por adc taferas')
+  // }
 
   function handlerSubmit() {
-    // e.preventDefault();
     if (!nome.current.value.trim()) {
       setStates({ ...states, form: "Informe um nome!", pg: 'form' });
       setIsCadastrarDisabled(true);
@@ -54,11 +49,6 @@ export default function Formulario({ state }) {
       return;
     }
 
-    // setIsCadastrarDisabled(true);
-    setTimeout(() => {
-      setIsCadastrarDisabled(false);
-    }, 2000);
-
     const options = {
       method: id ? 'PUT' : 'POST',
       headers: {
@@ -75,25 +65,6 @@ export default function Formulario({ state }) {
   function postFetch(options) {
     const url = `http://localhost:3000/task/${id ?? ''}`;
     fetchData(url, options);
-
-    // fetch(url, options).then((res) => {
-    //   if (res.status === 200 && res.ok) {
-    //     console.log(res)
-    //     console.log('Tarefa editada com sucesso!')
-    //     setTimeout(() => {
-    //       navigate('/tarefas');
-    //     }, 2000);
-    //   } else if (res.status === 201 && res.statusText === 'Created') {
-    //     console.log(res)
-    //     console.log('Tarefa criada com sucesso!')
-    //     setTimeout(() => {
-    //       navigate('/tarefas');
-    //     }, 2000);
-    //   } else {
-    //     console.warn(res)
-    //     console.warn('Erro ao criar tarefa')
-    //   }
-    // })
   }
 
   function deleteTarefa(id) {
@@ -101,23 +72,9 @@ export default function Formulario({ state }) {
     const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
     fetchData(url, options);
-
-    // fetch(url, options)
-    //   .then((res) => {
-    //     if (res.status === 204) {
-    //       console.log(res);
-    //       console.log('Tarefa deletada com sucesso');
-    //       setTimeout(() => {
-    //         navigate('/tarefas');
-    //       }, 2000);
-    //     } else {
-    //       console.log('Ouve um erro ao deletar tarefa.');
-    //     }
-    //   })
   }
 
   useEffect(() => {
-    // console.log(notice)
     setStates({ ...states, msg: notice, pg: 'home' })
   }, [notice]);
 
