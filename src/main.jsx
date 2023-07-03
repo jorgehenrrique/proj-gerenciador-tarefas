@@ -13,8 +13,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route index path='/tarefas' element={<App />} />
         <Route path='/tarefas/cadastrar' element={<CadastrarTarefas />} />
         <Route path='/tarefas/editar/:id' element={<CadastrarTarefas />} />
-        {/* <Route path='/tarefas/editar/:id' element={<EditarTarefas />} /> */}
-        {/* <Route path='/tarefas/:id' element={<EditarTarefas />} /> */}
         <Route path='*' element={<App />} />
       </Routes>
     </BrowserRouter>
