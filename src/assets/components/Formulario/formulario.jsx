@@ -59,10 +59,10 @@ export default function Formulario({ state }) {
         status: `${opcao.current.value}`
       })
     };
-    postFetch(options);
+    updateTarefa(options);
   }
 
-  function postFetch(options) {
+  function updateTarefa(options) {
     const url = `http://localhost:3000/task/${id ?? ''}`;
     fetchData(url, options);
   }
@@ -100,7 +100,7 @@ export default function Formulario({ state }) {
           {id && (
             <button onClick={() => deleteTarefa(id)}>Deletar</button>
           )}
-          <button onClick={handlerSubmit} disabled={isCadastrarDisabled}>Cadastrar</button>
+          <button onClick={handlerSubmit} disabled={isCadastrarDisabled}>{id ? 'Atualizar' : 'Cadastrar'}</button>
         </div>
 
       </form>
