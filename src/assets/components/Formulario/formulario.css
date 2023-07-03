@@ -19,9 +19,10 @@
   border: double 4px #7f09b6;
 }
 .form textarea {
-  height: 12rem;
+  height: 18rem;
   padding: 1rem;
   border: double 4px #7f09b6;
+  width: 150%;
 }
 .form div {
   display: flex;
@@ -68,6 +69,9 @@
     height: 80%;
   }
   .form {
+    width: 100%;
+  }
+  .form textarea {
     width: 100%;
   }
 }

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './voltarInicio.css';
 import { useEffect, useState } from 'react';
 
-export default function Logo() {
+export default function VoltarInicio() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [buttonName, setButtonName] = useState('TAREFAS');
