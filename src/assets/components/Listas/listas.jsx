@@ -10,7 +10,7 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
   const { fetchData } = useFetchOptions(); // hook personalizado - de Fetch
 
   function changeType(tipo, id) {
-    console.log(tipo, id);
+    // console.log(tipo, id);
     const options = {
       method: 'PUT',
       headers: {

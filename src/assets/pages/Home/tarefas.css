@@ -3,10 +3,8 @@
   height: 100vh;
   min-height: 100vh;
   background-color: #212121;
-  /* background-image: url("../../styles/img/page-turner.svg"); */
   background-image: url("../../styles/img/square-versatiles.svg");
   background-position: center center;
-  /* background-size: cover; */
   background-size: contain 100%;
   color: #fff;
   position: relative;
@@ -36,7 +34,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   border-bottom: 2px solid #9bf2fe;
-  /* box-shadow: 0 6px 10px 1px #9bf2fe; */
 }
 .lista div {
   display: flex;
@@ -54,10 +51,10 @@
 
 .colunas-listas .lista h1 {
   margin-bottom: 2rem;
-  /* margin-top: 1rem; */
   font-size: 2.4rem;
   font-weight: bolder;
   color: #00ffea;
+  border-bottom: 4px double #7f09b6;
 }
 
 .buscador {
@@ -80,7 +77,6 @@
   color: #fff;
 }
 .buscador:hover {
-  /* box-shadow: 0 6px 10px 1px #9bf2fe; */
   outline: 2px solid #9bf2fe;
   border-bottom: 2px solid transparent;
 }

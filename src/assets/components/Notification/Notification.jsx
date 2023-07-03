@@ -14,6 +14,7 @@ export default function Notification() {
     if (states.msg !== '' && states.msg !== null &&
       states.pg === 'home' && pathname === '/tarefas') {
       setTimeout(() => {
+        // setNoActive(false);
         setActive(true);
       }, 400);
       setTimeout(() => {
@@ -25,6 +26,7 @@ export default function Notification() {
 
     if (states.form !== '' && states.form !== null &&
       states.pg === 'form' && pathname === '/tarefas/cadastrar') {
+      // setNoActive(false);
       setActive(true);
       setTimeout(() => {
         setActive(false);

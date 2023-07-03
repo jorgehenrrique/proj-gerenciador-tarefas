@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
 import mais from './icon/mais.png';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
-import { useEffect, useRef, useState } from 'react';
 import Notification from '../../components/Notification/Notification';
+import { useEffect, useRef, useState } from 'react';
 
 export default function HomeTarefas() {
 
@@ -20,14 +21,11 @@ export default function HomeTarefas() {
         if (res.status === 200 && res.ok) {
           return res.json();
         } else {
-          throw new Error('Servidor indisponível');
+          alert('Servidor indisponível!');
         }
       }).then((data) => {
         setBkp(data);
         return setData(data);
-      }).catch((err) => {
-        // setErro(err.message);
-        console.log(err.message);
       });
 
     return (() => setUpdate(false));
