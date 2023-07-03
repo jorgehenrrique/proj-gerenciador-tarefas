@@ -41,7 +41,7 @@
 }
 
 @media (max-width: 800px) {
-  .hidden {
+  /* .hidden {
     visibility: auto;
-  }
+  } */
 }

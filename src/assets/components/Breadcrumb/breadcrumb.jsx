@@ -11,7 +11,7 @@ export default function Breadcrumb() {
   });
 
   return (
-    <nav className="caminho hidden">
+    <nav className="caminho">
       {/* {`${formattedPath.join(' / ')}`} */}
       {pathname === '/' ? 'Tarefas' : `${formattedPath.join(' / ')}`}
     </nav>

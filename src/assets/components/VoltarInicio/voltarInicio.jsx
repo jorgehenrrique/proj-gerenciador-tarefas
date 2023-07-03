@@ -17,7 +17,7 @@ export default function Logo() {
 
   return (
     <>
-      <button className="btn hidden" type="button" onClick={voltarHome}>
+      <button className="btn" type="button" onClick={voltarHome}>
         <strong>{buttonName}</strong>
         <div id="container-stars">
           <div id="stars"></div>

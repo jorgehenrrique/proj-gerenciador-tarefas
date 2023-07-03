@@ -6,6 +6,7 @@
   font-size: 2rem;
   font-weight: bold;
   padding: 0 2rem;
+  text-transform: uppercase;
 }
 .form input,
 .form textarea,
@@ -15,24 +16,38 @@
   border-radius: var(--border-radius);
   padding: 0 1rem;
   background-color: #fff;
+  border: double 4px #7f09b6;
 }
 .form textarea {
   height: 12rem;
   padding: 1rem;
+  border: double 4px #7f09b6;
 }
 .form div {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-self: flex-end;
   transition: all 0.3s ease;
 }
+
+/* Modal confirmar delete */
+.confirme-delete {
+  border-radius: var(--border-radius);
+  height: 4rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+.hidden {
+  display: none;
+}
+
 .form div button:hover {
   transform: scale(1.04);
-  box-shadow: 0 6px 10px 1px #9bf2fe;
+  box-shadow: 0 6px 10px 1px #7f09b6;
 }
 .form div button:active {
   transform: scale(1);
-  /* border-bottom: 2px solid #9bf2fe; */
 }
 .form div button {
   font-weight: bold;
@@ -44,6 +59,7 @@
   align-self: flex-end;
   transition: all 0.3s ease;
   gap: 3rem;
+  text-transform: uppercase;
 }
 
 @media (max-width: 800px) {

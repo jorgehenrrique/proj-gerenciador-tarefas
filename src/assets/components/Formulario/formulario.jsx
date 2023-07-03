@@ -16,6 +16,11 @@ export default function Formulario({ state }) {
   const { states, setStates } = useContext(Context);
 
   const [isCadastrarDisabled, setIsCadastrarDisabled] = useState(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
+  useEffect(() => {
+    setStates({ ...states, msg: notice, pg: 'home' })
+  }, [notice]);
 
   // if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
   //   console.log('Entrou por adc taferas')
@@ -68,15 +73,10 @@ export default function Formulario({ state }) {
   }
 
   function deleteTarefa(id) {
-    // console.log(id)
     const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
     fetchData(url, options);
   }
-
-  useEffect(() => {
-    setStates({ ...states, msg: notice, pg: 'home' })
-  }, [notice]);
 
   return (
     <>
@@ -98,9 +98,18 @@ export default function Formulario({ state }) {
 
         <div>
           {id && (
-            <button onClick={() => deleteTarefa(id)}>Deletar</button>
+            <button onClick={() => setShowDeleteConfirmation(true)}
+              className={showDeleteConfirmation ? 'hidden' : ''}>Deletar</button>
           )}
-          <button onClick={handlerSubmit} disabled={isCadastrarDisabled}>{id ? 'Atualizar' : 'Cadastrar'}</button>
+          {showDeleteConfirmation && (
+            <div className="confirme-delete">
+              <p>Confirma?</p>
+              <button onClick={() => deleteTarefa(id)}>Sim</button>
+              <button onClick={() => setShowDeleteConfirmation(false)}>Não</button>
+            </div>
+          )}
+          <button onClick={handlerSubmit} disabled={isCadastrarDisabled}
+            className={showDeleteConfirmation ? 'hidden' : ''}>{id ? 'Atualizar' : 'Cadastrar'}</button>
         </div>
 
       </form>

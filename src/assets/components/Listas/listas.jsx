@@ -24,7 +24,7 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
   }
 
   return (
-    <nav className={`nav-14 ${active ? 'active' : ''}`}>
+    <nav className={`nav ${active ? 'active' : ''}`}>
       <ul>
         {status === 'LISTADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>

@@ -19,7 +19,6 @@
   font-weight: bold;
 }
 .section-lista p {
-  /* font-weight: bold; */
   overflow: hidden;
 }
 .section-lista span {
@@ -33,7 +32,7 @@
 }
 
 /* || Efeito dos botões */
-.nav-14 {
+.nav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,26 +41,23 @@
   background-color: #fff;
   width: 2rem;
   height: 2rem;
-  /* transition: width 0.6s linear; */
   z-index: 10;
   top: 3.3rem;
   position: absolute;
 }
-.nav-14.active {
+.nav.active {
   width: 2rem;
 }
 
-.nav-14 ul {
+.nav ul {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   width: 0;
-  /* font-size: 1.8rem; */
   font-weight: bold;
-  /* transition: width 0.6s ease; */
   visibility: hidden;
 }
-.nav-14.active ul {
+.nav.active ul {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -69,12 +65,11 @@
   width: 100%;
   visibility: visible;
 }
-.nav-14 ul li:hover {
+.nav ul li:hover {
   padding: 0.5rem;
   height: 3rem;
 }
-.nav-14 ul li {
-  /* transform: rotateY(0deg); */
+.nav ul li {
   transform: translateX(60px);
   opacity: 0;
   transition: transform 0.6s linear, opacity 0.6s linear;
@@ -85,26 +80,20 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 30px #0000004d;
 }
-.nav-14 ul li:hover {
+.nav ul li:hover {
   transform: scale(1.08);
   box-shadow: 0 1px 10px 1px #9bf2fe;
   outline: 1px solid #fff;
 }
-.nav-14.active ul li {
+.nav.active ul li {
   opacity: 1;
-  /* transform: rotateY(360deg); */
   transform: translateX(0px);
-  /* border: 1px solid #fff; */
-  /* outline: 1px solid #fff; */
 }
-.nav-14 button {
+.nav button {
   background-color: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
-  /* position: relative; */
-  /* height: 3rem; */
-  /* width: 3rem; */
 }
-.nav-14 button:hover {
+.nav button:hover {
   box-shadow: 0 1px 10px 1px #9bf2fe;
 }
