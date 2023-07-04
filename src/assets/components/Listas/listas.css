@@ -1,7 +1,7 @@
 .section-lista {
   width: 100%;
   padding: 1.5rem;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: var(--border-radius);
   overflow: hidden;
   margin-bottom: 1rem;
@@ -15,7 +15,7 @@
 .section-lista h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #7f09b6;
+  color: var(--secondary-color);
   font-weight: bold;
 }
 .section-lista p {
@@ -38,7 +38,7 @@
   justify-content: center;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 30px #0000004d;
-  background-color: #fff;
+  background-color: var(--white-color);
   width: 2rem;
   height: 2rem;
   z-index: 10;
@@ -73,7 +73,7 @@
   transform: translateX(60px);
   opacity: 0;
   transition: transform 0.6s linear, opacity 0.6s linear;
-  background-color: #9bf2fe;
+  background-color: var(--primary-color);
   border-radius: var(--border-radius);
   height: 2rem;
   width: 8rem;
@@ -82,18 +82,18 @@
 }
 .nav ul li:hover {
   transform: scale(1.08);
-  box-shadow: 0 1px 10px 1px #9bf2fe;
-  outline: 1px solid #fff;
+  box-shadow: 0 1px 10px 1px var(--primary-color);
+  outline: 1px solid var(--white-color);
 }
 .nav.active ul li {
   opacity: 1;
   transform: translateX(0px);
 }
 .nav button {
-  background-color: #fff;
+  background-color: var(--white-color);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .nav button:hover {
-  box-shadow: 0 1px 10px 1px #9bf2fe;
+  box-shadow: 0 1px 10px 1px var(--primary-color);
 }
