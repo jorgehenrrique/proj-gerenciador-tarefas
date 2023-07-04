@@ -12,16 +12,18 @@
 .form textarea,
 .form select {
   height: 4rem;
-  border: 2px solid #000;
   border-radius: var(--border-radius);
   padding: 0 1rem;
   background-color: #fff;
-  border: double 4px #7f09b6;
+}
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  box-shadow: 0 2px 4px 0px #7f09b6;
 }
 .form textarea {
   height: 18rem;
   padding: 1rem;
-  border: double 4px #7f09b6;
   width: 150%;
 }
 .form div {
@@ -45,7 +47,7 @@
 
 .form div button:hover {
   transform: scale(1.04);
-  box-shadow: 0 6px 10px 1px #7f09b6;
+  box-shadow: 0 2px 4px 0px #7f09b6;
 }
 .form div button:active {
   transform: scale(1);
