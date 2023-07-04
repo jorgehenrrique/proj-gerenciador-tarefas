@@ -14,18 +14,18 @@
   height: 4rem;
   border-radius: var(--border-radius);
   padding: 0 1rem;
-  background-color: #fff;
+  background-color: var(--white-color);
   transition: all 0.3s ease;
 }
 .form input:focus,
 .form textarea:focus,
 .form select:focus {
-  box-shadow: 0 2px 4px 0px #7f09b6;
+  box-shadow: 0 2px 4px 0px var(--secondary-color);
 }
 .form input:hover,
 .form textarea:hover,
 .form select:hover {
-  box-shadow: 0 2px 4px 0px #7f09b6;
+  box-shadow: 0 2px 4px 0px var(--secondary-color);
 }
 .form textarea {
   height: 18rem;
@@ -53,14 +53,14 @@
 
 .form div button:hover {
   transform: scale(1.04);
-  box-shadow: 0 2px 4px 0px #7f09b6;
+  box-shadow: 0 2px 4px 0px var(--secondary-color);
 }
 .form div button:active {
   transform: scale(1);
 }
 .form div button {
   font-weight: bold;
-  background-color: #9bf2fe;
+  background-color: var(--primary-color);
   height: 4rem;
   width: fit-content;
   padding: 1rem 2rem;
