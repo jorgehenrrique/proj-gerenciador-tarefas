@@ -5,7 +5,7 @@
   background-color: #212121;
   background-image: url("../../styles/img/square-versatiles.svg");
   background-position: center center;
-  color: #fff;
+  color: var(--white-color);
 }
 .cadastrar {
   background-color: var(--container-bkg-color);
