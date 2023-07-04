@@ -12,17 +12,17 @@ export default function useFetchOptions() {
           setNotice('Tarefa editada com sucesso!')
           setTimeout(() => {
             navigate('/tarefas');
-          }, 10);
+          }, 200);
         } else if (res.status === 201 && res.statusText === 'Created') {
           setNotice('Tarefa criada com sucesso!')
           setTimeout(() => {
             navigate('/tarefas');
-          }, 10);
+          }, 200);
         } else if (res.status === 204) {
           setNotice('Tarefa deletada com sucesso!')
           setTimeout(() => {
             navigate('/tarefas');
-          }, 10);
+          }, 200);
         } else {
           throw new Error('Servidor indisponível');
         }

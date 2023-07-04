@@ -5,6 +5,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
 import Context from '../Context/Context';
+import Loader from '../Loader/loader';
 
 export default function Formulario({ state }) {
 
@@ -113,6 +114,10 @@ export default function Formulario({ state }) {
         </div>
 
       </form>
+
+      {notice && (
+        <Loader />
+      )}
     </>
   );
 }

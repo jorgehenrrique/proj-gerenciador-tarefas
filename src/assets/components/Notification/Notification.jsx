@@ -16,7 +16,7 @@ export default function Notification() {
       setTimeout(() => {
         setNoActive(false);
         setActive(true);
-      }, 400);
+      }, 200);
       setTimeout(() => {
         setActive(false);
         setNoActive(true);
