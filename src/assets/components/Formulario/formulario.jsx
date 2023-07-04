@@ -6,6 +6,7 @@ import './formulario.css';
 import useFetchOptions from '../Hooks/useFetchOptions';
 import Context from '../Context/Context';
 import Loader from '../Loader/loader';
+import { useNavigate } from 'react-router-dom';
 
 export default function Formulario({ state }) {
 
@@ -15,6 +16,7 @@ export default function Formulario({ state }) {
   const { name, status, description, id, create } = state;
   const { notice, fetchData } = useFetchOptions();
   const { states, setStates } = useContext(Context);
+  const navigate = useNavigate();
 
   const [isCadastrarDisabled, setIsCadastrarDisabled] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -101,6 +103,9 @@ export default function Formulario({ state }) {
           {id && (
             <button onClick={() => setShowDeleteConfirmation(true)}
               className={showDeleteConfirmation ? 'hidden' : ''}>Deletar</button>
+          )}
+          {!id && (
+            <button onClick={() => navigate('/tarefas')}>Cancelar</button>
           )}
           {showDeleteConfirmation && (
             <div className="confirme-delete">
