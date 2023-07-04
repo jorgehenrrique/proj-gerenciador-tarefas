@@ -109,9 +109,8 @@ export default function Formulario({ state }) {
           )}
           {showDeleteConfirmation && (
             <div className="confirme-delete">
-              <p>Confirma?</p>
-              <button onClick={() => deleteTarefa(id)}>Sim</button>
-              <button onClick={() => setShowDeleteConfirmation(false)}>Não</button>
+              <button onClick={() => deleteTarefa(id)}>Confirma</button>
+              <button onClick={() => setShowDeleteConfirmation(false)}>Concela</button>
             </div>
           )}
           <button onClick={handlerSubmit} disabled={isCadastrarDisabled}
