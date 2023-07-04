@@ -15,10 +15,16 @@
   border-radius: var(--border-radius);
   padding: 0 1rem;
   background-color: #fff;
+  transition: all 0.3s ease;
 }
 .form input:focus,
 .form textarea:focus,
 .form select:focus {
+  box-shadow: 0 2px 4px 0px #7f09b6;
+}
+.form input:hover,
+.form textarea:hover,
+.form select:hover {
   box-shadow: 0 2px 4px 0px #7f09b6;
 }
 .form textarea {
