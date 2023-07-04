@@ -33,7 +33,6 @@ export default function HomeTarefas() {
 
   function buscarTarefa() {
     const busca = tarefa.current.value.trim().toLowerCase();
-    // console.log(busca)
 
     const newData = data.filter(tarefa => {
       return tarefa.status.toLowerCase().includes(busca) ||

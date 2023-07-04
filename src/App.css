@@ -8,8 +8,12 @@
   --border-radius: 2rem;
   --border-radius-plus: 2.5rem;
 
+  --white-color: #fff;
   --primary-color: #9bf2fe;
-  --secondary-color: #14213d;
+  --secondary-color: #7f09b6;
+
+  --text-color-primary: #00ffea;
+
   --container-bkg-color: #9bf2fe71;
 }
 
@@ -22,7 +26,6 @@
   scrollbar-width: thin;
   scrollbar-color: #9bf2fe #070d12;
 }
-/* Chrome, Edge, Safari */
 *::-webkit-scrollbar {
   width: 10px;
 }
@@ -35,6 +38,3 @@
   border-radius: 20px;
   border: 2px solid #070d12;
 }
-
-/* @media (max-width: 800px) {
-} */
