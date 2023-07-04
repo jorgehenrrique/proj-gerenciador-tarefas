@@ -8,10 +8,9 @@
   --border-radius: 2rem;
   --border-radius-plus: 2.5rem;
 
-  --header-color-light: #e8e8e8;
-  --header-title-light: #14213d;
-  --header-shadow-light: #4ca5d9;
-  --container-bkg-light: #f9fafb;
+  --primary-color: #9bf2fe;
+  --secondary-color: #14213d;
+  --container-bkg-color: #9bf2fe71;
 }
 
 #root {
