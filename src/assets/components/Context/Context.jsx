@@ -9,7 +9,6 @@ export function MyContext(props) {
     pg: '',
     form: ''
   })
-  console.log(states.msg)
 
   return (
     <Context.Provider value={{ states, setStates }}>
