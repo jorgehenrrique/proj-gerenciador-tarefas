@@ -4,6 +4,7 @@ import editar from './icon/editar.png';
 import './listas.css';
 import { useEffect, useState } from 'react';
 import useFetchOptions from '../Hooks/useFetchOptions';
+import { useDrag } from 'react-dnd';
 
 function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
   const [active, setActive] = useState(false);
@@ -59,8 +60,13 @@ export default function Listas({ name, status, description, id, create, setUpdat
     expand ? setPointing('') : setPointing('...');
   }, [expand, max])
 
+  const [, dragRef] = useDrag({ // Deixar as notas arrastaveis e passar tipo/id
+    type: 'nota',
+    item: { id: id },
+  })
+
   return (
-    <div className="section-lista">
+    <div className="section-lista" ref={dragRef}>
       <div>
         <h2>{name}</h2>
         <span className='edit'><AnimaOpcoes

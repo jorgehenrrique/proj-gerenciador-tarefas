@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
@@ -8,12 +9,17 @@ import './tarefas.css';
 import Notification from '../../components/Notification/Notification';
 import { useEffect, useRef, useState } from 'react';
 
+import { useDrop, DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import useFetchOptions from '../../components/Hooks/useFetchOptions';
+
 export default function HomeTarefas() {
 
   const [data, setData] = useState(null);
   const [bkp, setBkp] = useState(null);
   const [update, setUpdate] = useState(false);
   const tarefa = useRef();
+  const { fetchData } = useFetchOptions(); // hook personalizado - de Fetch
 
   useEffect(() => {
     fetch('http://localhost:3000/task')
@@ -49,70 +55,166 @@ export default function HomeTarefas() {
     }
   }
 
+  // DragDrop react-dnd
+  function handleDrop(notaId, novaCategoria) {
+    console.log(notaId, novaCategoria)
+    const newData = data.map((item) => {
+      if (item.id === notaId) {
+        return { ...item, status: novaCategoria };
+      }
+      return item;
+    });
+    console.log(newData);
+    changeType(novaCategoria, notaId)
+    // setData(newData);
+  }
+
+  function CategoriaDestino({ categoria }) {
+    // console.log(categoria)
+    const [{ isOver }, dropRef] = useDrop({
+      accept: 'nota',
+      drop: (item) => {
+        handleDrop(item.id, categoria);
+      },
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+      }),
+    });
+
+    const categoriaDestinoStyle = {
+      border: isOver ? '2px solid green' : '1px solid black',
+      padding: '8px',
+      margin: '8px',
+      backgroundColor: isOver ? '' : '',
+    };
+
+    return (
+      <div ref={dropRef} style={categoriaDestinoStyle}>
+        {categoria}
+      </div>
+    );
+  }
+
+  // Altera a categoria
+  function changeType(tipo, id) {
+    const options = {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ status: `${tipo}` })
+    }
+    const url = `http://localhost:3000/task/${id}`;
+    fetchData(url, options);
+    setUpdate(true); // Atualiza tarefas na home
+  }
+
   return (
     <div className="container-tarefas">
       <Breadcrumb />
       <Notification />
 
-      <input ref={tarefa} onChange={buscarTarefa} onKeyUpCapture={handleClear}
-        type="search" placeholder='Buscar...'
+      <input ref={tarefa}
+        onChange={buscarTarefa}
+        onKeyUpCapture={handleClear}
+        type="search"
+        placeholder='Buscar...'
         className="buscador" />
 
       {data && (
-        <div className="colunas-listas">
-          <div className="lista">
-            <div>
-              <h1>Listadas</h1>
-              <NavLink className='add' state={'LISTADA'} to='/tarefas/cadastrar'>
-                <img src={mais} alt="Add" /></NavLink>
+        <DndProvider backend={HTML5Backend}>
+          <div className="colunas-listas">
+            <div className="lista">
+              <div>
+                <h1>Listadas</h1>
+                <NavLink
+                  className='add'
+                  state={'LISTADA'}
+                  to='/tarefas/cadastrar'>
+                  <img src={mais} alt="Add" />
+                </NavLink>
+              </div>
+              <section>
+                <CategoriaDestino categoria="LISTADA" />
+                {data.map(item => {
+                  if (item.status === 'LISTADA') {
+                    return (
+                      <Listas
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        status={item.status}
+                        description={item.description}
+                        create={item.created_at}
+                        setUpdate={setUpdate} />);
+                  }
+                  return null;
+                })}
+              </section>
             </div>
-            <section>
-              {data.map(item => {
-                if (item.status === 'LISTADA') {
-                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
-                }
-              })}
-            </section>
-          </div>
 
-          <div className="lista">
-            <div>
-              <h1>Iniciadas</h1>
-              <NavLink className='add' state={'INICIADA'} to='/tarefas/cadastrar'>
-                <img src={mais} alt="Add" /></NavLink>
+            <div className="lista">
+              <div>
+                <h1>Iniciadas</h1>
+                <NavLink
+                  className='add'
+                  state={'INICIADA'}
+                  to='/tarefas/cadastrar'>
+                  <img src={mais} alt="Add" />
+                </NavLink>
+              </div>
+              <section>
+                <CategoriaDestino categoria="INICIADA" />
+                {data.map(item => {
+                  if (item.status === 'INICIADA') {
+                    return (
+                      <Listas
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        status={item.status}
+                        description={item.description}
+                        create={item.created_at}
+                        setUpdate={setUpdate} />);
+                  }
+                  return null;
+                })}
+              </section>
             </div>
-            <section>
-              {data.map(item => {
-                if (item.status === 'INICIADA') {
-                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
-                }
-              })}
-            </section>
-          </div>
 
-          <div className="lista">
-            <div>
-              <h1>Finalizadas</h1>
-              <NavLink className='add' state={'FINALIZADA'} to='/tarefas/cadastrar'>
-                <img src={mais} alt="Add" /></NavLink>
+            <div className="lista">
+              <div>
+                <h1>Finalizadas</h1>
+                <NavLink
+                  className='add'
+                  state={'FINALIZADA'}
+                  to='/tarefas/cadastrar'>
+                  <img src={mais} alt="Add" />
+                </NavLink>
+              </div>
+              <section>
+                <CategoriaDestino categoria="FINALIZADA" />
+                {data.map(item => {
+                  if (item.status === 'FINALIZADA') {
+                    return (
+                      <Listas
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        status={item.status}
+                        description={item.description}
+                        create={item.created_at}
+                        setUpdate={setUpdate} />);
+                  }
+                  return null;
+                })}
+              </section>
             </div>
-            <section>
-              {data.map(item => {
-                if (item.status === 'FINALIZADA') {
-                  return (<Listas key={item.id} id={item.id} name={item.name} status={item.status}
-                    description={item.description} create={item.created_at} setUpdate={setUpdate} />)
-                }
-              })}
-            </section>
           </div>
-        </div>
+        </DndProvider>
       )}
 
-      {!data && (
-        <Loader />
-      )}
+      {!data && <Loader />}
     </div>
   );
 }
