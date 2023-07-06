@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react-hooks/exhaustive-deps */
 import Breadcrumb from '../../components/Breadcrumb/breadcrumb';
 import Listas from '../../components/Listas/listas';
 import mais from './icon/mais.png';
@@ -44,7 +43,6 @@ export default function HomeTarefas() {
         tarefa.name.toLowerCase().includes(busca) ||
         tarefa.description.toLowerCase().includes(busca);
     });
-
     busca === '' ? setUpdate(true) : setData(newData);
   }
 

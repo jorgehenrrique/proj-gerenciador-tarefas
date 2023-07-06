@@ -31,6 +31,7 @@
   background-color: var(--container-bkg-color);
   border-radius: var(--border-radius);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); /* Para o Safari */
   overflow-y: auto;
   overflow-x: hidden;
   border-bottom: 2px solid var(--container-bkg-color);
@@ -63,6 +64,7 @@
   color: var(--white-color);
   font-size: 1.8rem;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); /* Para o Safari */
   transition: all 0.2s linear;
 }
 .buscador::placeholder {
@@ -86,7 +88,7 @@
   padding: 0 2rem;
 }
 .dnd.over {
-  padding: 0 0 1rem 1rem;
+  padding: 0 0 4rem 2rem;
   transform: scale(1.1);
   color: var(--secondary-color);
   border-bottom: 2px solid var(--text-color-primary);
