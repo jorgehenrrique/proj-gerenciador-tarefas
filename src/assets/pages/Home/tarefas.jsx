@@ -56,20 +56,10 @@ export default function HomeTarefas() {
 
   // Drag-n-Drop react-dnd
   function handleDrop(notaId, novaCategoria) {
-    console.log(notaId, novaCategoria)
-    // const newData = data.map((item) => {
-    //   if (item.id === notaId) {
-    //     return { ...item, status: novaCategoria };
-    //   }
-    //   return item;
-    // });
-    // console.log(newData);
     changeType(novaCategoria, notaId)
-    // setData(newData);
   }
 
   function CategoriaDestino({ categoria }) {
-    console.log(categoria)
     const [{ isOver }, dropRef] = useDrop({
       accept: 'nota',
       drop: (item) => {
@@ -98,7 +88,7 @@ export default function HomeTarefas() {
     }
     const url = `http://localhost:3000/task/${id}`;
     fetchData(url, options);
-    setUpdate(true); // Atualiza tarefas na home
+    setUpdate(true); // Atualiza tarefas
   }
 
   return (
@@ -119,7 +109,6 @@ export default function HomeTarefas() {
             <div className="lista">
               <div>
                 <CategoriaDestino categoria="LISTADA" />
-                {/* <h1>Listadas</h1> */}
                 <NavLink
                   className='add'
                   state={'LISTADA'}
@@ -128,7 +117,6 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                {/* <CategoriaDestino categoria="LISTADA" /> */}
                 {data.map(item => {
                   if (item.status === 'LISTADA') {
                     return (
@@ -149,7 +137,6 @@ export default function HomeTarefas() {
             <div className="lista">
               <div>
                 <CategoriaDestino categoria="INICIADA" />
-                {/* <h1>Iniciadas</h1> */}
                 <NavLink
                   className='add'
                   state={'INICIADA'}
@@ -158,7 +145,6 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                {/* <CategoriaDestino categoria="INICIADA" /> */}
                 {data.map(item => {
                   if (item.status === 'INICIADA') {
                     return (
@@ -179,7 +165,6 @@ export default function HomeTarefas() {
             <div className="lista">
               <div>
                 <CategoriaDestino categoria="FINALIZADA" />
-                {/* <h1>Finalizadas</h1> */}
                 <NavLink
                   className='add'
                   state={'FINALIZADA'}
@@ -188,7 +173,6 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                {/* <CategoriaDestino categoria="FINALIZADA" /> */}
                 {data.map(item => {
                   if (item.status === 'FINALIZADA') {
                     return (
