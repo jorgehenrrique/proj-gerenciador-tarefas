@@ -25,12 +25,6 @@ export default function Formulario({ state }) {
     setStates({ ...states, msg: notice, pg: 'home' })
   }, [notice]);
 
-  // if (state === 'LISTADA' || state === 'INICIADA' || state === 'FINALIZADA') {
-  //   console.log('Entrou por adc taferas')
-  // } else {
-  //   console.log('Não entrou por adc taferas')
-  // }
-
   function handlerSubmit() {
     if (!nome.current.value.trim()) {
       setStates({ ...states, form: "Informe um nome!", pg: 'form' });
@@ -119,9 +113,7 @@ export default function Formulario({ state }) {
 
       </form>
 
-      {notice && (
-        <Loader />
-      )}
+      {notice && <Loader />}
     </>
   );
 }
