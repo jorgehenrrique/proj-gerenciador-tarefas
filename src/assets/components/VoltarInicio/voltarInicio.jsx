@@ -8,7 +8,7 @@ export default function VoltarInicio() {
   const [buttonName, setButtonName] = useState('TAREFAS');
 
   useEffect(() => {
-    (pathname !== '/tarefas' && pathname !== '/' ? setButtonName('HOME') : setButtonName('TAREFAS'))
+    (pathname !== '/tarefas' && pathname !== '/' ? setButtonName('VOLTAR') : setButtonName('TAREFAS'))
   }, [pathname])
 
   const voltarHome = () => {
