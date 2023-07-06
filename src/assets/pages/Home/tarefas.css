@@ -49,14 +49,14 @@
   transform: scale(1.2);
 }
 
-.colunas-listas .lista h1 {
+/* .colunas-listas .lista h1 {
   margin-bottom: 2rem;
   font-size: 2.4rem;
   font-weight: bolder;
   color: var(--text-color-primary);
   text-transform: uppercase;
   border-bottom: 2px solid var(--secondary-color);
-}
+} */
 
 .buscador {
   position: absolute;
@@ -80,6 +80,25 @@
 .buscador:hover {
   outline: 2px solid var(--primary-color);
   border-bottom: 2px solid transparent;
+}
+
+/* || Drag and Drop */
+.dnd {
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  font-weight: bolder;
+  color: var(--text-color-primary);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--secondary-color);
+  transition: all 0.2s linear;
+  width: 100%;
+  padding: 0 2rem;
+}
+.dnd.over {
+  padding: 0 0 1rem 1rem;
+  transform: scale(1.1);
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--text-color-primary);
 }
 
 @media (max-width: 800px) {

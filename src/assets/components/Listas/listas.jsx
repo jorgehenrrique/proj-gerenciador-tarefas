@@ -60,7 +60,8 @@ export default function Listas({ name, status, description, id, create, setUpdat
     expand ? setPointing('') : setPointing('...');
   }, [expand, max])
 
-  const [, dragRef] = useDrag({ // Deixar as notas arrastaveis e passar tipo/id
+  // Deixar as notas arrastaveis e passar tipo/id
+  const [, dragRef] = useDrag({
     type: 'nota',
     item: { id: id },
   })

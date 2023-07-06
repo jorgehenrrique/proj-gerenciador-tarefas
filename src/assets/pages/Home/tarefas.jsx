@@ -8,7 +8,6 @@ import Loader from '../../components/Loader/loader';
 import './tarefas.css';
 import Notification from '../../components/Notification/Notification';
 import { useEffect, useRef, useState } from 'react';
-
 import { useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import useFetchOptions from '../../components/Hooks/useFetchOptions';
@@ -55,22 +54,22 @@ export default function HomeTarefas() {
     }
   }
 
-  // DragDrop react-dnd
+  // Drag-n-Drop react-dnd
   function handleDrop(notaId, novaCategoria) {
     console.log(notaId, novaCategoria)
-    const newData = data.map((item) => {
-      if (item.id === notaId) {
-        return { ...item, status: novaCategoria };
-      }
-      return item;
-    });
-    console.log(newData);
+    // const newData = data.map((item) => {
+    //   if (item.id === notaId) {
+    //     return { ...item, status: novaCategoria };
+    //   }
+    //   return item;
+    // });
+    // console.log(newData);
     changeType(novaCategoria, notaId)
     // setData(newData);
   }
 
   function CategoriaDestino({ categoria }) {
-    // console.log(categoria)
+    console.log(categoria)
     const [{ isOver }, dropRef] = useDrop({
       accept: 'nota',
       drop: (item) => {
@@ -81,15 +80,8 @@ export default function HomeTarefas() {
       }),
     });
 
-    const categoriaDestinoStyle = {
-      border: isOver ? '2px solid green' : '1px solid black',
-      padding: '8px',
-      margin: '8px',
-      backgroundColor: isOver ? '' : '',
-    };
-
     return (
-      <div ref={dropRef} style={categoriaDestinoStyle}>
+      <div ref={dropRef} className={`dnd ${isOver ? 'over' : ''}`} >
         {categoria}
       </div>
     );
@@ -126,7 +118,8 @@ export default function HomeTarefas() {
           <div className="colunas-listas">
             <div className="lista">
               <div>
-                <h1>Listadas</h1>
+                <CategoriaDestino categoria="LISTADA" />
+                {/* <h1>Listadas</h1> */}
                 <NavLink
                   className='add'
                   state={'LISTADA'}
@@ -135,7 +128,7 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                <CategoriaDestino categoria="LISTADA" />
+                {/* <CategoriaDestino categoria="LISTADA" /> */}
                 {data.map(item => {
                   if (item.status === 'LISTADA') {
                     return (
@@ -155,7 +148,8 @@ export default function HomeTarefas() {
 
             <div className="lista">
               <div>
-                <h1>Iniciadas</h1>
+                <CategoriaDestino categoria="INICIADA" />
+                {/* <h1>Iniciadas</h1> */}
                 <NavLink
                   className='add'
                   state={'INICIADA'}
@@ -164,7 +158,7 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                <CategoriaDestino categoria="INICIADA" />
+                {/* <CategoriaDestino categoria="INICIADA" /> */}
                 {data.map(item => {
                   if (item.status === 'INICIADA') {
                     return (
@@ -184,7 +178,8 @@ export default function HomeTarefas() {
 
             <div className="lista">
               <div>
-                <h1>Finalizadas</h1>
+                <CategoriaDestino categoria="FINALIZADA" />
+                {/* <h1>Finalizadas</h1> */}
                 <NavLink
                   className='add'
                   state={'FINALIZADA'}
@@ -193,7 +188,7 @@ export default function HomeTarefas() {
                 </NavLink>
               </div>
               <section>
-                <CategoriaDestino categoria="FINALIZADA" />
+                {/* <CategoriaDestino categoria="FINALIZADA" /> */}
                 {data.map(item => {
                   if (item.status === 'FINALIZADA') {
                     return (
