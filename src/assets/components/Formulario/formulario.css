@@ -50,6 +50,9 @@
 .hidden {
   display: none;
 }
+.confirme-delete .delete {
+  background-color: var(--delete-color);
+}
 
 .form div button:hover {
   transform: scale(1.04);
