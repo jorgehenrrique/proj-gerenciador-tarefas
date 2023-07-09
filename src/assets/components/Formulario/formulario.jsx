@@ -103,7 +103,7 @@ export default function Formulario({ state }) {
           )}
           {showDeleteConfirmation && (
             <div className="confirme-delete">
-              <button onClick={() => setShowDeleteConfirmation(false)} className="cancel">Concela</button>
+              <button onClick={() => setShowDeleteConfirmation(false)}>Concela</button>
               <button onClick={() => deleteTarefa(id)} className="delete">Confirma</button>
             </div>
           )}
