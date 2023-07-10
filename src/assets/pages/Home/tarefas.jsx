@@ -77,7 +77,7 @@ export default function HomeTarefas() {
     );
   }
 
-  // Altera o tipo
+  // Altera o tipo pelo drag and drop
   function changeType(tipo, id) {
     const options = {
       method: 'PUT',
