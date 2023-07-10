@@ -22,12 +22,12 @@ export default function Formulario({ state }) {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   useEffect(() => {
-    setStates({ ...states, msg: notice, pg: 'home' })
+    setStates({ ...states, msg: notice, pg: 'home' }) // notificacao de resposta do fetch
   }, [notice]);
 
   function handlerSubmit() {
     if (!nome.current.value.trim()) {
-      setStates({ ...states, form: "Informe um nome!", pg: 'form' });
+      setStates({ ...states, form: "Informe um nome!", pg: 'form' }); // notificacao de editar form
       setIsCadastrarDisabled(true);
       setTimeout(() => {
         setIsCadastrarDisabled(false);
@@ -51,6 +51,7 @@ export default function Formulario({ state }) {
       return;
     }
 
+    // options para atualizar ou criar tarefas
     const options = {
       method: id ? 'PUT' : 'POST',
       headers: {
@@ -64,12 +65,12 @@ export default function Formulario({ state }) {
     updateTarefa(options);
   }
 
-  function updateTarefa(options) {
+  function updateTarefa(options) { // Atualiza ou cria tarefa
     const url = `http://localhost:3000/task/${id ?? ''}`;
     fetchData(url, options);
   }
 
-  function deleteTarefa(id) {
+  function deleteTarefa(id) { // Deleta tarefa
     const url = `http://localhost:3000/task/${id}`;
     const options = { method: 'DELETE' };
     fetchData(url, options);
