@@ -10,6 +10,7 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
   const [active, setActive] = useState(false);
   const { fetchData } = useFetchOptions(); // hook personalizado - de Fetch
 
+  // Altera tipo pelos botoes
   function changeType(tipo, id) {
     const options = {
       method: 'PUT',
