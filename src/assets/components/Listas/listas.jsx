@@ -28,18 +28,18 @@ function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
       <ul>
         {status === 'LISTADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => changeType('INICIADA', id)}>Iniciar</NavLink></li>
-          <li><NavLink onClick={() => changeType('FINALIZADA', id)}>Finalizar</NavLink></li>
+          <li onClick={() => changeType('INICIADA', id)}>Iniciar</li>
+          <li onClick={() => changeType('FINALIZADA', id)}>Finalizar</li>
         </>) : null}
         {status === 'INICIADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => changeType('LISTADA', id)}>Listar</NavLink></li>
-          <li><NavLink onClick={() => changeType('FINALIZADA', id)}>Finalizar</NavLink></li>
+          <li onClick={() => changeType('LISTADA', id)}>Listar</li>
+          <li onClick={() => changeType('FINALIZADA', id)}>Finalizar</li>
         </>) : null}
         {status === 'FINALIZADA' ? (<>
           <li><NavLink state={{ name, status, description, id, create }} to={`/tarefas/editar/${id}`}>Editar</NavLink></li>
-          <li><NavLink onClick={() => changeType('LISTADA', id)}>Listar</NavLink></li>
-          <li><NavLink onClick={() => changeType('INICIADA', id)}>Iniciar</NavLink></li>
+          <li onClick={() => changeType('LISTADA', id)}>Listar</li>
+          <li onClick={() => changeType('INICIADA', id)}>Iniciar</li>
         </>) : null}
       </ul>
       <button onClick={() => setActive(!active)}>
@@ -55,6 +55,7 @@ export default function Listas({ name, status, description, id, create, setUpdat
   const [max, setMax] = useState(null);
   const [pointing, setPointing] = useState(null);
 
+  // Expandir as notas
   useEffect(() => {
     expand ? setMax(2000) : setMax(60);
     expand ? setPointing('') : setPointing('...');
