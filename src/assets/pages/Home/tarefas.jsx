@@ -5,7 +5,7 @@ import mais from './icon/mais.png';
 import { NavLink } from 'react-router-dom';
 import Loader from '../../components/Loader/loader';
 import './tarefas.css';
-import Notification from '../../components/Notification/Notification';
+import Notification from '../../components/Notification/notification';
 import { useEffect, useRef, useState } from 'react';
 import { useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -19,7 +19,7 @@ export default function HomeTarefas() {
   const tarefa = useRef();
   const { fetchData } = useFetchOptions(); // hook personalizado - de Fetch
 
-  useEffect(() => {
+  useEffect(() => { // Listar tarefas
     fetch('http://localhost:3000/task')
       .then((res) => {
         if (res.status === 200 && res.ok) {
@@ -35,6 +35,7 @@ export default function HomeTarefas() {
     return (() => setUpdate(false));
   }, [update]);
 
+  // Pesquisar tarefa
   function buscarTarefa() {
     const busca = tarefa.current.value.trim().toLowerCase();
 
@@ -57,6 +58,7 @@ export default function HomeTarefas() {
     changeType(novaCategoria, notaId)
   }
 
+  // Drag-n-Drop react-dnd
   function CategoriaDestino({ categoria }) {
     const [{ isOver }, dropRef] = useDrop({
       accept: 'nota',
@@ -75,7 +77,7 @@ export default function HomeTarefas() {
     );
   }
 
-  // Altera a categoria
+  // Altera o tipo
   function changeType(tipo, id) {
     const options = {
       method: 'PUT',

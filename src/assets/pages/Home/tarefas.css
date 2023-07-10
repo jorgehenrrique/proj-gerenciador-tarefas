@@ -31,7 +31,7 @@
   background-color: var(--container-bkg-color);
   border-radius: var(--border-radius);
   backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px); /* Para o Safari */
+  -webkit-backdrop-filter: blur(2px); /* Safari */
   overflow-y: auto;
   overflow-x: hidden;
   border-bottom: 2px solid var(--container-bkg-color);
@@ -64,7 +64,7 @@
   color: var(--white-color);
   font-size: 1.8rem;
   backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px); /* Para o Safari */
+  -webkit-backdrop-filter: blur(2px); /* Safari */
   transition: all 0.2s linear;
 }
 .buscador::placeholder {

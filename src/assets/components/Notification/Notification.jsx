@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react';
-import './Notification.css';
+import './notification.css';
 import Context from '../Context/Context';
 import { useLocation } from 'react-router-dom';
 
