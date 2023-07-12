@@ -9,7 +9,7 @@ import Notification from '../../components/Notification/notification';
 import { useEffect, useRef, useState } from 'react';
 import { useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import useFetchOptions from '../../components/Hooks/useFetchOptions';
+import useFetchOptions from '../../Hooks/useFetchOptions';
 
 export default function HomeTarefas() {
 

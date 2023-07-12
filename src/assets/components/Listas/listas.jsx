@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import editar from './icon/editar.png';
 import './listas.css';
 import { useEffect, useState } from 'react';
-import useFetchOptions from '../Hooks/useFetchOptions';
+import useFetchOptions from '../../Hooks/useFetchOptions';
 import { useDrag } from 'react-dnd';
 
 function AnimaOpcoes({ name, status, description, id, create, setUpdate }) {
