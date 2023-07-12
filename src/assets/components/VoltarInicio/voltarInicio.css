@@ -178,3 +178,9 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+@media (max-width: 800px) {
+  .btn {
+    top: 1rem;
+  }
+}
