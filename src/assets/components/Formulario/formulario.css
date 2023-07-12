@@ -25,7 +25,7 @@
 .form input:hover,
 .form textarea:hover,
 .form select:hover {
-  box-shadow: 0 2px 4px 0px var(--secondary-color);
+  box-shadow: 0 2px 4px 0px #000;
 }
 .form textarea {
   height: 18rem;
@@ -55,8 +55,8 @@
 }
 
 .form div button:hover {
-  transform: scale(1.04);
-  box-shadow: 0 2px 4px 0px var(--secondary-color);
+  transform: scale(1.06);
+  box-shadow: 0 2px 4px 0px #000;
 }
 .form div button:active {
   transform: scale(1);
@@ -84,5 +84,9 @@
   }
   .form textarea {
     width: 100%;
+  }
+  .form div {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
